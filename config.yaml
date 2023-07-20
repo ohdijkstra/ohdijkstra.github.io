@@ -1,97 +1,143 @@
-baseURL: "https://www.example.com/"
-theme: "up-business-theme"
-languageCode: "en-us"
-
-title: "Up Business"
-
-permalink:
-  #custom-homepage
-  home: "/public/index.html"
-
-# googleAnalytics: ""
-
-summaryLength: 20
+module:
+    hugoVersion:
+        extended: true
+        min: "0.87.0"
 
 params:
-  title: "Up Business"
-  description: "We specialize in providing services to desing websites, applications, build and maintain business for customers."
-  images: 
-    - "images/hero-image.png"
+    mainSections:
+        - post
+    featuredImageField: image
+    rssFullContent: true
+    favicon:
 
-  logo: "arrow-up.png"
+    footer:
+        since:
+        customText:
 
-  favicons:
-    themeColor: "#FFFFFF"
-    backgroundColor: "#FFFFFF"
-    faviconColor: "#000000"
+    dateFormat:
+        published: Jan 02, 2006
+        lastUpdated: Jan 02, 2006 15:04 MST
 
-  social:
-    dribbble: "#"
-    instagram: "#"
-    facebook: "#"
-    twitter: "#"
+    sidebar:
+        compact: false
+        emoji:
+        subtitle:
+        avatar:
+            enabled: true
+            local: true
+            src: img/avatar.png
 
-  location:
-    - "3891 Ranchview Dr. Richardson, California 62639"
-    - "4517 Washington Ave. Manchester, Kentucky 39495"
+    article:
+        math: false
+        toc: true
+        readingTime: true
+        license:
+            enabled: false
+            default: Licensed under CC BY-NC-SA 4.0
 
-  contact:
-    - "trungkienspktnd@gamail.com"
-    - "207.555.0119"
+    comments:
+        enabled: false
+        provider: disqus
 
-  copyright: "© 2022 Up Business All Rights Reserved"
+        disqusjs:
+            shortname:
+            apiUrl:
+            apiKey:
+            admin:
+            adminLabel:
 
-  postProcess: false
+        utterances:
+            repo:
+            issueTerm: pathname
+            label:
 
-menus:
-  main:
-    - name: "Home"
-      url: "/#hero"
-      weight: 1
+        remark42:
+            host:
+            site:
+            locale:
 
-    - name: "How we work"
-      url: "/#"
-      weight: 2
+        vssue:
+            platform:
+            owner:
+            repo:
+            clientId:
+            clientSecret:
+            autoCreateIssue: false
 
-    - name: "Our team"
-      url: "/#"
-      weight: 3
+        # Waline client configuration see: https://waline.js.org/en/reference/client.html
+        waline:
+            serverURL:
+            lang:
+            visitor:
+            avatar:
+            emoji:
+                - https://cdn.jsdelivr.net/gh/walinejs/emojis/weibo
+            requiredMeta:
+                - name
+                - email
+                - url
+            placeholder:
+            locale:
+                admin: Admin
 
-    - name: "Pricing"
-      url: "/#"
-      weight: 4
+        twikoo:
+            envId:
+            region:
+            path:
+            lang:
 
-    - name: "Blog"
-      url: "/blog"
-      weight: 5
+        giscus:
+            repo:
+            repoID:
+            category:
+            categoryID:
+            mapping:
+            strict:
+            lightTheme:
+            darkTheme:
+            reactionsEnabled: 1
+            emitMetadata: 0
+            inputPosition:
+            lang:
 
-  buttons:
-    - name: "Book a call"
-      url: "/#"
-      weight: 5
-      pre: "btn btn-primary text-light"
+        gitalk:
+            owner:
+            admin:
+            repo:
+            clientID:
+            clientSecret:
 
-  footer:
-    - name: "Home"
-      url: "/#hero"
-      weight: 1
+        cusdis:
+            host:
+            id:
 
-    - name: "How we work"
-      url: "/#"
-      weight: 2
+    widgets:
+        homepage: []
+        page: []
 
-    - name: "Our team"
-      url: "/#"
-      weight: 3
+    opengraph:
+        twitter:
+            # Your Twitter username
+            site:
 
-    - name: "Pricing"
-      url: "/#"
-      weight: 4
+            # Available values: summary, summary_large_image
+            card: summary_large_image
 
-    - name: "Blog"
-      url: "/blog"
-      weight: 5
+    defaultImage:
+        opengraph:
+            enabled: false
+            local: false
+            src:
 
-taxonomies:
-  series: "series"
-  tags: "tags"
+    colorScheme:
+        # Display toggle
+        toggle: true
+
+        # Available values: auto, light, dark
+        default: auto
+
+    imageProcessing:
+        cover:
+            enabled: true
+        content:
+            enabled: true
