@@ -4,6 +4,11 @@ languageCode: "en-us"
 
 title: "Up Business"
 
+outputs:
+  home:
+    - HTML
+    - public/index.html
+
 # googleAnalytics: ""
 
 summaryLength: 20
