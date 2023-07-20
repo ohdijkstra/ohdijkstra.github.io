@@ -4,10 +4,9 @@ languageCode: "en-us"
 
 title: "Up Business"
 
-outputs:
-  home:
-    - HTML
-    - public/index.html
+permalink:
+  #custom-homepage
+  home: "/public/index.html"
 
 # googleAnalytics: ""
 
