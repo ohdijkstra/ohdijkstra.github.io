@@ -7,13 +7,12 @@
         <generator>Hugo -- gohugo.io</generator>
         <language>zh</language>
         <lastBuildDate>Fri, 22 Mar 2024 13:27:39 +0800</lastBuildDate><atom:link href="https://ohdijkstra.github.io/index.xml" rel="self" type="application/rss+xml" /><item>
-        <title>Freqtrade Tutorial</title>
+        <title>Freqtrade算法交易简明教程</title>
         <link>https://ohdijkstra.github.io/post/freqtrade-tutorial/</link>
         <pubDate>Fri, 22 Mar 2024 13:27:39 +0800</pubDate>
         
         <guid>https://ohdijkstra.github.io/post/freqtrade-tutorial/</guid>
-        <description>&lt;h1 id=&#34;freqtrade算法交易简明教程&#34;&gt;Freqtrade算法交易简明教程&lt;/h1&gt;
-&lt;h2 id=&#34;引言&#34;&gt;引言&lt;/h2&gt;
+        <description>&lt;h2 id=&#34;引言&#34;&gt;引言&lt;/h2&gt;
 &lt;p&gt;Freqtrade是一款开源的加密货币算法交易软件，它允许交易者利用定制策略自动执行交易。本教程旨在通过浅显的语言和逐步的解析，向您介绍Freqtrade的基础概念和操作流程，使您能够理解并开始使用这一工具进行算法交易。&lt;/p&gt;
 &lt;h2 id=&#34;概要&#34;&gt;概要&lt;/h2&gt;
 &lt;ol&gt;
@@ -183,8 +182,7 @@
         <pubDate>Tue, 05 Mar 2024 11:01:24 +0800</pubDate>
         
         <guid>https://ohdijkstra.github.io/post/about-hugo/</guid>
-        <description>&lt;h1 id=&#34;如何快速使用hugo制作自己的网站&#34;&gt;如何快速使用Hugo制作自己的网站&lt;/h1&gt;
-&lt;p&gt;在互联网时代，拥有一个个人网站几乎成了每个技术爱好者的标配。它不仅可以展示你的技术栈，还能分享你的思考和见解。本文将引导你如何使用Hugo——一个快速、灵活的静态网站生成器——来构建你的个人网站。我们将从基本概念入手，逐步深入到Hugo的核心特性，最终带你完成一个个性化的网站搭建。&lt;/p&gt;
+        <description>&lt;p&gt;在互联网时代，拥有一个个人网站几乎成了每个技术爱好者的标配。它不仅可以展示你的技术栈，还能分享你的思考和见解。本文将引导你如何使用Hugo——一个快速、灵活的静态网站生成器——来构建你的个人网站。我们将从基本概念入手，逐步深入到Hugo的核心特性，最终带你完成一个个性化的网站搭建。&lt;/p&gt;
 &lt;h2 id=&#34;引言&#34;&gt;引言&lt;/h2&gt;
 &lt;p&gt;Hugo是一个用Go语言编写的静态网站生成器，它以其快速的构建速度和灵活的配置而著名。与动态网站相比，静态网站不依赖于数据库，页面在服务器上预先生成，可以提供更快的加载速度和更高的安全性。Hugo不仅能帮你快速生成网站，还能通过丰富的主题和模板让网站设计变得简单而优雅。&lt;/p&gt;
 &lt;h2 id=&#34;安装hugo&#34;&gt;安装Hugo&lt;/h2&gt;
@@ -234,8 +232,7 @@
         <pubDate>Mon, 04 Mar 2024 07:16:51 +0100</pubDate>
         
         <guid>https://ohdijkstra.github.io/post/my-first-post/</guid>
-        <description>&lt;h1 id=&#34;chatgpt原理分析&#34;&gt;ChatGPT原理分析&lt;/h1&gt;
-&lt;p&gt;欢迎来到我们的技术博客！今天，我们将深入探讨ChatGPT的原理，一款由OpenAI开发的自然语言处理模型。我们将从基础的自然语言处理概念入手，逐步深入到ChatGPT的核心原理，帮助大家更好地理解这项革命性技术的工作机制。&lt;/p&gt;
+        <description>&lt;p&gt;欢迎来到我们的技术博客！今天，我们将深入探讨ChatGPT的原理，一款由OpenAI开发的自然语言处理模型。我们将从基础的自然语言处理概念入手，逐步深入到ChatGPT的核心原理，帮助大家更好地理解这项革命性技术的工作机制。&lt;/p&gt;
 &lt;h2 id=&#34;引言&#34;&gt;引言&lt;/h2&gt;
 &lt;p&gt;在人工智能的世界里，自然语言处理（NLP）技术占据了非常重要的位置。它使得机器能够理解、解释和生成人类语言，从而实现与人类的有效沟通。ChatGPT，作为最新一代的语言处理模型，通过其惊人的语言理解和生成能力，引起了广泛的关注和讨论。&lt;/p&gt;
 &lt;h2 id=&#34;自然语言处理简介&#34;&gt;自然语言处理简介&lt;/h2&gt;
