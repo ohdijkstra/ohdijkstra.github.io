@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>AI on UWin AI</title>
+    <link>https://ohdijkstra.github.io/en/tags/ai/</link>
+    <description>Recent content in AI on UWin AI</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Mon, 04 Mar 2024 07:16:51 +0100</lastBuildDate>
+    <atom:link href="https://ohdijkstra.github.io/en/tags/ai/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>ChatGPT principle analysis</title>
+      <link>https://ohdijkstra.github.io/en/post/my-first-post/</link>
+      <pubDate>Mon, 04 Mar 2024 07:16:51 +0100</pubDate>
+      <guid>https://ohdijkstra.github.io/en/post/my-first-post/</guid>
+      <description>Welcome to our technology blog! Today, we will delve into the principles of ChatGPT, a natural language processing model developed by OpenAI. We will start with basic natural language processing concepts and gradually delve into the core principles of ChatGPT to help everyone better understand the working mechanism of this revolutionary technology.&#xA;Introduction In the world of artificial intelligence, natural language processing (NLP) technology occupies a very important position. It enables machines to understand, interpret and generate human language to achieve effective communication with humans.</description>
+    </item>
+  </channel>
+</rss>

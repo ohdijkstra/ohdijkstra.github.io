@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Trade on UWin AI</title>
+    <link>https://ohdijkstra.github.io/en/tags/trade/</link>
+    <description>Recent content in Trade on UWin AI</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Fri, 22 Mar 2024 13:27:39 +0800</lastBuildDate>
+    <atom:link href="https://ohdijkstra.github.io/en/tags/trade/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Freqtrade Algorithmic Trading Tutorial Concise</title>
+      <link>https://ohdijkstra.github.io/en/post/freqtrade-tutorial/</link>
+      <pubDate>Fri, 22 Mar 2024 13:27:39 +0800</pubDate>
+      <guid>https://ohdijkstra.github.io/en/post/freqtrade-tutorial/</guid>
+      <description>Introduction Freqtrade is an open-source cryptocurrency algorithmic trading software that allows traders to automate their trades with customized strategies. This tutorial is designed to introduce you to the basic concepts and operating procedures of Freqtrade in simple language and step-by-step analysis, so that you can understand and start using this tool for algorithmic trading.&#xA;Summary Introduction to Freqtrade: Learn what Freqtrade is and its main features. Environment Setup: How to install and configure Freqtrade.</description>
+    </item>
+  </channel>
+</rss>

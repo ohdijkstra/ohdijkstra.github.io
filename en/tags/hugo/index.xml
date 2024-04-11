@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Hugo on UWin AI</title>
+    <link>https://ohdijkstra.github.io/en/tags/hugo/</link>
+    <description>Recent content in Hugo on UWin AI</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Tue, 05 Mar 2024 11:01:24 +0800</lastBuildDate>
+    <atom:link href="https://ohdijkstra.github.io/en/tags/hugo/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>How to quickly use Hugo to create your own website</title>
+      <link>https://ohdijkstra.github.io/en/post/about-hugo/</link>
+      <pubDate>Tue, 05 Mar 2024 11:01:24 +0800</pubDate>
+      <guid>https://ohdijkstra.github.io/en/post/about-hugo/</guid>
+      <description>In the Internet age, having a personal website has become standard for almost every technology enthusiast. It not only showcases your technology stack, but also shares your thoughts and insights. This article will guide you how to use Hugo - a fast, flexible static website generator - to build your personal website. We will start with the basic concepts, gradually deepen into the core features of Hugo, and finally lead you to complete the construction of a personalized website.</description>
+    </item>
+  </channel>
+</rss>

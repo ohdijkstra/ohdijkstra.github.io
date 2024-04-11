@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Posts on UWin AI</title>
+    <link>https://ohdijkstra.github.io/en/post/</link>
+    <description>Recent content in Posts on UWin AI</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Thu, 11 Apr 2024 12:02:52 +0800</lastBuildDate>
+    <atom:link href="https://ohdijkstra.github.io/en/post/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Resolve the simulator running error caused by CocoaPods dependency on arm64 architecture Mac which only supports x86 architecture</title>
+      <link>https://ohdijkstra.github.io/en/post/arm64-simulator-conflict/</link>
+      <pubDate>Thu, 11 Apr 2024 12:02:52 +0800</pubDate>
+      <guid>https://ohdijkstra.github.io/en/post/arm64-simulator-conflict/</guid>
+      <description>Introduction The Apple M1 chip introduced a major change to Mac architecture, moving from the traditional Intel x86 architecture to ARM architecture. This change means for developers that many existing applications and dependent libraries need to adapt to the new arm64 architecture. In this blog, we’ll explore typical error messages you may encounter when using the iOS Simulator on an M1 Mac, explain the rationale behind them, and provide practical solutions.</description>
+    </item>
+    <item>
+      <title>Freqtrade Algorithmic Trading Tutorial Concise</title>
+      <link>https://ohdijkstra.github.io/en/post/freqtrade-tutorial/</link>
+      <pubDate>Fri, 22 Mar 2024 13:27:39 +0800</pubDate>
+      <guid>https://ohdijkstra.github.io/en/post/freqtrade-tutorial/</guid>
+      <description>Introduction Freqtrade is an open-source cryptocurrency algorithmic trading software that allows traders to automate their trades with customized strategies. This tutorial is designed to introduce you to the basic concepts and operating procedures of Freqtrade in simple language and step-by-step analysis, so that you can understand and start using this tool for algorithmic trading.&#xA;Summary Introduction to Freqtrade: Learn what Freqtrade is and its main features. Environment Setup: How to install and configure Freqtrade.</description>
+    </item>
+    <item>
+      <title>How to quickly use Hugo to create your own website</title>
+      <link>https://ohdijkstra.github.io/en/post/about-hugo/</link>
+      <pubDate>Tue, 05 Mar 2024 11:01:24 +0800</pubDate>
+      <guid>https://ohdijkstra.github.io/en/post/about-hugo/</guid>
+      <description>In the Internet age, having a personal website has become standard for almost every technology enthusiast. It not only showcases your technology stack, but also shares your thoughts and insights. This article will guide you how to use Hugo - a fast, flexible static website generator - to build your personal website. We will start with the basic concepts, gradually deepen into the core features of Hugo, and finally lead you to complete the construction of a personalized website.</description>
+    </item>
+    <item>
+      <title>ChatGPT principle analysis</title>
+      <link>https://ohdijkstra.github.io/en/post/my-first-post/</link>
+      <pubDate>Mon, 04 Mar 2024 07:16:51 +0100</pubDate>
+      <guid>https://ohdijkstra.github.io/en/post/my-first-post/</guid>
+      <description>Welcome to our technology blog! Today, we will delve into the principles of ChatGPT, a natural language processing model developed by OpenAI. We will start with basic natural language processing concepts and gradually delve into the core principles of ChatGPT to help everyone better understand the working mechanism of this revolutionary technology.&#xA;Introduction In the world of artificial intelligence, natural language processing (NLP) technology occupies a very important position. It enables machines to understand, interpret and generate human language to achieve effective communication with humans.</description>
+    </item>
+  </channel>
+</rss>

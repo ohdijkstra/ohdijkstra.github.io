@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>IOS on UWin AI</title>
+    <link>https://ohdijkstra.github.io/en/tags/ios/</link>
+    <description>Recent content in IOS on UWin AI</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Thu, 11 Apr 2024 12:02:52 +0800</lastBuildDate>
+    <atom:link href="https://ohdijkstra.github.io/en/tags/ios/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Resolve the simulator running error caused by CocoaPods dependency on arm64 architecture Mac which only supports x86 architecture</title>
+      <link>https://ohdijkstra.github.io/en/post/arm64-simulator-conflict/</link>
+      <pubDate>Thu, 11 Apr 2024 12:02:52 +0800</pubDate>
+      <guid>https://ohdijkstra.github.io/en/post/arm64-simulator-conflict/</guid>
+      <description>Introduction The Apple M1 chip introduced a major change to Mac architecture, moving from the traditional Intel x86 architecture to ARM architecture. This change means for developers that many existing applications and dependent libraries need to adapt to the new arm64 architecture. In this blog, we’ll explore typical error messages you may encounter when using the iOS Simulator on an M1 Mac, explain the rationale behind them, and provide practical solutions.</description>
+    </item>
+  </channel>
+</rss>
