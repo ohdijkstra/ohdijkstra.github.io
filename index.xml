@@ -6,7 +6,66 @@
         <description>Recent content on UWin AI</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>zh</language>
-        <lastBuildDate>Fri, 22 Mar 2024 13:27:39 +0800</lastBuildDate><atom:link href="https://ohdijkstra.github.io/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Thu, 11 Apr 2024 12:02:52 +0800</lastBuildDate><atom:link href="https://ohdijkstra.github.io/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>解决arm64架构Mac上仅支持x86架构的CocoaPods依赖导致的模拟器运行错误</title>
+        <link>https://ohdijkstra.github.io/post/arm64-simulator-conflict/</link>
+        <pubDate>Thu, 11 Apr 2024 12:02:52 +0800</pubDate>
+        
+        <guid>https://ohdijkstra.github.io/post/arm64-simulator-conflict/</guid>
+        <description>&lt;h2 id=&#34;引言&#34;&gt;引言&lt;/h2&gt;
+&lt;p&gt;Apple M1 芯片引入了对 Mac 架构的重大变革，它从传统的 Intel x86 架构转变为 ARM 架构。这一变化对于开发者意味着许多现有的应用和依赖库需要适配新的 &lt;code&gt;arm64&lt;/code&gt; 架构。在这篇博客中，我们将探讨在 M1 Mac 上使用 iOS 模拟器时可能遇到的典型报错问题，解释其背后的原理，并提供实际的解决方法。&lt;/p&gt;
+&lt;h2 id=&#34;m1-芯片与模拟器兼容性问题&#34;&gt;M1 芯片与模拟器兼容性问题&lt;/h2&gt;
+&lt;h3 id=&#34;原理解析&#34;&gt;原理解析&lt;/h3&gt;
+&lt;p&gt;M1 芯片的 ARM 架构与早期 Mac 上的 x86 架构有显著差异。M1 芯片原生支持 &lt;code&gt;arm64&lt;/code&gt; 架构，而不是 Intel 芯片使用的 &lt;code&gt;x86_64&lt;/code&gt; 架构。这一改变直接影响到了开发环境，尤其是在运行模拟器时。&lt;/p&gt;
+&lt;p&gt;在 M1 Mac 上，iOS 模拟器可以直接以 &lt;code&gt;arm64&lt;/code&gt; 架构运行，而不需要任何转换，这样可以提高性能。但这也带来了一个问题：很多现有的第三方库和依赖项仍然只编译为 &lt;code&gt;x86_64&lt;/code&gt; 架构，未能提供 &lt;code&gt;arm64&lt;/code&gt; 版本。&lt;/p&gt;
+&lt;h3 id=&#34;报错情况&#34;&gt;报错情况&lt;/h3&gt;
+&lt;p&gt;开发者在 M1 Mac 上使用模拟器运行这些仅支持 &lt;code&gt;x86_64&lt;/code&gt; 的库时，可能会遇到类似以下的报错信息：&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;Building for &amp;#39;iOS-simulator&amp;#39;, but linking in object file built for &amp;#39;iOS&amp;#39;, incompatible with iOS-simulator arm64.
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;这表示尝试在 &lt;code&gt;arm64&lt;/code&gt; 架构的模拟器上运行一个仅为 &lt;code&gt;x86_64&lt;/code&gt; 架构编译的库。&lt;/p&gt;
+&lt;h2 id=&#34;解决方法&#34;&gt;解决方法&lt;/h2&gt;
+&lt;h3 id=&#34;使用-excluded_archs&#34;&gt;使用 &lt;code&gt;EXCLUDED_ARCHS&lt;/code&gt;&lt;/h3&gt;
+&lt;p&gt;&lt;code&gt;EXCLUDED_ARCHS&lt;/code&gt; 设置在 Xcode 中用于指定在编译过程中要排除的架构。通过将 &lt;code&gt;EXCLUDED_ARCHS&lt;/code&gt; 设置为 &lt;code&gt;arm64&lt;/code&gt;，Xcode 在编译为模拟器时不会尝试编译 &lt;code&gt;arm64&lt;/code&gt; 架构的代码，从而避免了架构不匹配的问题。&lt;/p&gt;
+&lt;h3 id=&#34;具体操作&#34;&gt;具体操作&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;打开 Xcode 项目设置&lt;/strong&gt;：选择项目文件，然后在 Build Settings 标签页中查找 &lt;code&gt;Excluded Architectures&lt;/code&gt; 设置。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;设置排除架构&lt;/strong&gt;：为 Debug 和 Release 配置添加 &lt;code&gt;arm64&lt;/code&gt; 值，确保模拟器编译时排除此架构。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;要为所有的 CocoaPods 依赖项设置 &lt;code&gt;Excluded Architectures&lt;/code&gt;，你可以在项目的 Podfile 中使用 post-install 钩子来全局地应用这个配置。这样做可以确保所有通过 CocoaPods 管理的库都将排除指定的架构。以下是在 Podfile 中实现这一设置的方法：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;打开你的 Podfile。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;在文件的底部，添加一个 &lt;code&gt;post_install&lt;/code&gt; 钩子。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;在该钩子内部，编写脚本来设置 &lt;code&gt;EXCLUDED_ARCHS&lt;/code&gt;。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;下面是如何在 Podfile 中添加这个钩子的示例代码：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-ruby&#34; data-lang=&#34;ruby&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# Podfile&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# 其他的 Podfile 配置...&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;post_install &lt;span style=&#34;color:#66d9ef&#34;&gt;do&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;|&lt;/span&gt;installer&lt;span style=&#34;color:#f92672&#34;&gt;|&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  installer&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;generated_projects&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;each &lt;span style=&#34;color:#66d9ef&#34;&gt;do&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;|&lt;/span&gt;project&lt;span style=&#34;color:#f92672&#34;&gt;|&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    project&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;build_configurations&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;each &lt;span style=&#34;color:#66d9ef&#34;&gt;do&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;|&lt;/span&gt;config&lt;span style=&#34;color:#f92672&#34;&gt;|&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      &lt;span style=&#34;color:#75715e&#34;&gt;# 设置排除 arm64 架构&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      config&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;build_settings&lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;EXCLUDED_ARCHS[sdk=iphonesimulator*]&amp;#39;&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;]&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;arm64&amp;#39;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;end&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#66d9ef&#34;&gt;end&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;end&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;这段代码在 &lt;code&gt;post_install&lt;/code&gt; 钩子中遍历所有生成的 Xcode 项目，并设置每个配置的 &lt;code&gt;EXCLUDED_ARCHS&lt;/code&gt;，仅对 iPhone 模拟器 SDK 排除 &lt;code&gt;arm64&lt;/code&gt; 架构。这意味着当你在模拟器上运行项目时，Xcode 会忽略 &lt;code&gt;arm64&lt;/code&gt; 架构，帮助解决兼容性问题。&lt;/p&gt;
+&lt;p&gt;完成这些更改后，需要运行 &lt;code&gt;pod install&lt;/code&gt; 或 &lt;code&gt;pod update&lt;/code&gt; 命令，以确保这些更改应用到你的项目中。这样做可以帮助解决 M1 Mac 上使用模拟器时遇到的架构不匹配问题。&lt;/p&gt;
+&lt;h3 id=&#34;原理说明&#34;&gt;原理说明&lt;/h3&gt;
+&lt;p&gt;这样做的原理是让 Xcode 在构建应用时忽略对 &lt;code&gt;arm64&lt;/code&gt; 架构的支持，这意味着它将使用 Rosetta 2 来模拟 &lt;code&gt;x86_64&lt;/code&gt; 架构，从而允许应用在 M1 Mac 的模拟器上运行。&lt;/p&gt;
+&lt;h3 id=&#34;长期解决方案&#34;&gt;长期解决方案&lt;/h3&gt;
+&lt;p&gt;虽然使用 &lt;code&gt;EXCLUDED_ARCHS&lt;/code&gt; 可以解决兼容性问题，但这只是一个临时解决方案。长期而言，库的维护者需要更新他们的代码，以确保它们支持 &lt;code&gt;arm64&lt;/code&gt; 架构。随着越来越多的开发者转向 M1 Mac，对 &lt;code&gt;arm64&lt;/code&gt; 架构的原生支持变得尤为重要。&lt;/p&gt;
+&lt;h2 id=&#34;结语&#34;&gt;结语&lt;/h2&gt;
+&lt;p&gt;M1 芯片的引入对 Mac 应用开发产生了深远的影响，特别是在处理架构兼容性方面。理解这些兼容性问题的原理，并知道如何临时解决它们，对于保持开发流程的顺畅至关重要。随着技术的进步和生态系统的逐渐成熟，开发者需要适应这种变化，更新和优化他们的应用以充分利用 M1 芯片的优势。长期来看，库和工具的维护者也将更新他们的产品，以原生支持新架构，最终消除这些兼容性问题。因此，虽然当前可能需要一些临时的解决方案来处理架构兼容性问题，但我们也可以期待一个更加统一和高效的开发环境，使得在所有苹果设备上的应用开发和运行更为顺畅。&lt;/p&gt;
+</description>
+        </item>
+        <item>
         <title>Freqtrade算法交易简明教程</title>
         <link>https://ohdijkstra.github.io/post/freqtrade-tutorial/</link>
         <pubDate>Fri, 22 Mar 2024 13:27:39 +0800</pubDate>
