@@ -1,19 +1,63 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>AI on UWin AI</title>
-    <link>https://ohdijkstra.github.io/en/tags/ai/</link>
-    <description>Recent content in AI on UWin AI</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <language>en</language>
-    <lastBuildDate>Mon, 04 Mar 2024 07:16:51 +0100</lastBuildDate>
-    <atom:link href="https://ohdijkstra.github.io/en/tags/ai/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>ChatGPT principle analysis</title>
-      <link>https://ohdijkstra.github.io/en/post/my-first-post/</link>
-      <pubDate>Mon, 04 Mar 2024 07:16:51 +0100</pubDate>
-      <guid>https://ohdijkstra.github.io/en/post/my-first-post/</guid>
-      <description>Welcome to our technology blog! Today, we will delve into the principles of ChatGPT, a natural language processing model developed by OpenAI. We will start with basic natural language processing concepts and gradually delve into the core principles of ChatGPT to help everyone better understand the working mechanism of this revolutionary technology.&#xA;Introduction In the world of artificial intelligence, natural language processing (NLP) technology occupies a very important position. It enables machines to understand, interpret and generate human language to achieve effective communication with humans.</description>
-    </item>
-  </channel>
+    <channel>
+        <title>AI on UWin AI</title>
+        <link>https://ohdijkstra.github.io/en/tags/ai/</link>
+        <description>Recent content in AI on UWin AI</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>en</language>
+        <lastBuildDate>Mon, 04 Mar 2024 07:16:51 +0100</lastBuildDate><atom:link href="https://ohdijkstra.github.io/en/tags/ai/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>ChatGPT principle analysis</title>
+        <link>https://ohdijkstra.github.io/en/post/my-first-post/</link>
+        <pubDate>Mon, 04 Mar 2024 07:16:51 +0100</pubDate>
+        
+        <guid>https://ohdijkstra.github.io/en/post/my-first-post/</guid>
+        <description>&lt;p&gt;Welcome to our technology blog! Today, we will delve into the principles of ChatGPT, a natural language processing model developed by OpenAI. We will start with basic natural language processing concepts and gradually delve into the core principles of ChatGPT to help everyone better understand the working mechanism of this revolutionary technology.&lt;/p&gt;
+&lt;h2 id=&#34;introduction&#34;&gt;
+    &lt;a href=&#34;#introduction&#34; class=&#34;header-anchor&#34;&gt;#&lt;/a&gt;
+    Introduction
+&lt;/h2&gt;&lt;p&gt;In the world of artificial intelligence, natural language processing (NLP) technology occupies a very important position. It enables machines to understand, interpret and generate human language to achieve effective communication with humans. ChatGPT, as the latest generation of language processing model, has attracted widespread attention and discussion through its amazing language understanding and generation capabilities.&lt;/p&gt;
+&lt;h2 id=&#34;introduction-to-natural-language-processing&#34;&gt;
+    &lt;a href=&#34;#introduction-to-natural-language-processing&#34; class=&#34;header-anchor&#34;&gt;#&lt;/a&gt;
+    Introduction to natural language processing
+&lt;/h2&gt;&lt;p&gt;The core goal of natural language processing technology is to enable machines to understand and generate language like humans. This involves multiple subfields, including syntax analysis, semantic understanding, sentiment analysis, etc. Early NLP technology relied on a large number of rules and dictionaries, but this method was often inadequate when dealing with complex language phenomena.&lt;/p&gt;
+&lt;p&gt;With the development of deep learning technology, revolutionary changes have taken place in the field of NLP. Models such as BERT and GPT are trained based on large-scale data sets, which can capture the deep structure and meaning of language, greatly improving language processing capabilities.&lt;/p&gt;
+&lt;h2 id=&#34;introduction-to-gpt-model&#34;&gt;
+    &lt;a href=&#34;#introduction-to-gpt-model&#34; class=&#34;header-anchor&#34;&gt;#&lt;/a&gt;
+    Introduction to GPT model
+&lt;/h2&gt;&lt;p&gt;GPT (Generative Pre-trained Transformer) is a pre-trained language generation model based on the Transformer architecture. It is first pre-trained on large-scale text datasets to learn the general patterns and structures of language, and then fine-tuned on specific tasks to achieve a high degree of task customization.&lt;/p&gt;
+&lt;h3 id=&#34;transformer-architecture&#34;&gt;
+    &lt;a href=&#34;#transformer-architecture&#34; class=&#34;header-anchor&#34;&gt;#&lt;/a&gt;
+    Transformer Architecture
+&lt;/h3&gt;&lt;p&gt;The Transformer model is the core of GPT, which was proposed by Vaswani et al. in 2017. Transformer is entirely based on the Self-Attention Mechanism, which enables the model to effectively capture long-distance dependencies when processing sequence data.&lt;/p&gt;
+&lt;p&gt;The mathematical representation of the self-attention mechanism is as follows:&lt;/p&gt;
+&lt;p&gt;$$
+\text{Attention}(Q, K, V) = \text{softmax}\left(\frac{QK^T}{\sqrt{d_k}}\right)V
+$$&lt;/p&gt;
+&lt;p&gt;Among them, (Q), (K), and (V) represent the query (Query), key (Key), and value (Value) respectively, and (d_k) is the dimension of the key. This mechanism allows the model to take into account all other words in the sentence when generating each word, thereby better understanding contextual relationships.&lt;/p&gt;
+&lt;h3 id=&#34;pre-training-and-fine-tuning&#34;&gt;
+    &lt;a href=&#34;#pre-training-and-fine-tuning&#34; class=&#34;header-anchor&#34;&gt;#&lt;/a&gt;
+    Pre-training and fine-tuning
+&lt;/h3&gt;&lt;p&gt;The training of the GPT model is divided into two stages: pre-training and fine-tuning. In the pre-training stage, the model is trained on a large amount of unlabeled text to learn general knowledge of the language. In the fine-tuning phase, the model is further trained on labeled data for specific tasks to adapt to specific application scenarios.&lt;/p&gt;
+&lt;h2 id=&#34;how-chatgpt-works&#34;&gt;
+    &lt;a href=&#34;#how-chatgpt-works&#34; class=&#34;header-anchor&#34;&gt;#&lt;/a&gt;
+    How ChatGPT works
+&lt;/h2&gt;&lt;p&gt;ChatGPT is optimized and customized based on GPT to make it more suitable for chat robot scenarios. It is trained on large-scale dialogue data, enabling the model to generate coherent and logical dialogue text.&lt;/p&gt;
+&lt;h3 id=&#34;dialogue-understanding&#34;&gt;
+    &lt;a href=&#34;#dialogue-understanding&#34; class=&#34;header-anchor&#34;&gt;#&lt;/a&gt;
+    Dialogue Understanding
+&lt;/h3&gt;&lt;p&gt;ChatGPT generates responses by understanding context. It takes into account not only the current input, but also the previous conversation history, which makes the generated responses more natural and relevant.&lt;/p&gt;
+&lt;h3 id=&#34;generate-strategy&#34;&gt;
+    &lt;a href=&#34;#generate-strategy&#34; class=&#34;header-anchor&#34;&gt;#&lt;/a&gt;
+    Generate strategy
+&lt;/h3&gt;&lt;p&gt;ChatGPT uses a variety of strategies to optimize output when generating text, including temperature adjustment, top-k sampling, etc. These strategies help the model avoid generating irrelevant or inappropriate text while maintaining text diversity. content.&lt;/p&gt;
+&lt;h2 id=&#34;conclusion&#34;&gt;
+    &lt;a href=&#34;#conclusion&#34; class=&#34;header-anchor&#34;&gt;#&lt;/a&gt;
+    Conclusion
+&lt;/h2&gt;&lt;p&gt;By in-depth analysis of the principles of ChatGPT, we can see how it has made breakthroughs in the field of natural language processing. From the basic Transformer architecture to complex dialogue understanding and text generation strategies, ChatGPT demonstrates the high level of development of current AI technology. Although there are still many challenges and limitations, ChatGPT and the technology behind it undoubtedly provide new possibilities for future human-computer interaction.&lt;/p&gt;
+&lt;p&gt;I hope this blog can help you better understand the principles and working mechanism of ChatGPT. Technology is constantly advancing, and we will continue to explore and share more cutting-edge knowledge. Thanks for reading!&lt;/p&gt;
+</description>
+        </item>
+        
+    </channel>
 </rss>

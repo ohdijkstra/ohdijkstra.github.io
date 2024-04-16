@@ -1,19 +1,90 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>IOS on UWin AI</title>
-    <link>https://ohdijkstra.github.io/en/tags/ios/</link>
-    <description>Recent content in IOS on UWin AI</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <language>en</language>
-    <lastBuildDate>Thu, 11 Apr 2024 12:02:52 +0800</lastBuildDate>
-    <atom:link href="https://ohdijkstra.github.io/en/tags/ios/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Resolve the simulator running error caused by CocoaPods dependency on arm64 architecture Mac which only supports x86 architecture</title>
-      <link>https://ohdijkstra.github.io/en/post/arm64-simulator-conflict/</link>
-      <pubDate>Thu, 11 Apr 2024 12:02:52 +0800</pubDate>
-      <guid>https://ohdijkstra.github.io/en/post/arm64-simulator-conflict/</guid>
-      <description>Introduction The Apple M1 chip introduced a major change to Mac architecture, moving from the traditional Intel x86 architecture to ARM architecture. This change means for developers that many existing applications and dependent libraries need to adapt to the new arm64 architecture. In this blog, we’ll explore typical error messages you may encounter when using the iOS Simulator on an M1 Mac, explain the rationale behind them, and provide practical solutions.</description>
-    </item>
-  </channel>
+    <channel>
+        <title>IOS on UWin AI</title>
+        <link>https://ohdijkstra.github.io/en/tags/ios/</link>
+        <description>Recent content in IOS on UWin AI</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>en</language>
+        <lastBuildDate>Thu, 11 Apr 2024 12:02:52 +0800</lastBuildDate><atom:link href="https://ohdijkstra.github.io/en/tags/ios/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Resolve the simulator running error caused by CocoaPods dependency on arm64 architecture Mac which only supports x86 architecture</title>
+        <link>https://ohdijkstra.github.io/en/post/arm64-simulator-conflict/</link>
+        <pubDate>Thu, 11 Apr 2024 12:02:52 +0800</pubDate>
+        
+        <guid>https://ohdijkstra.github.io/en/post/arm64-simulator-conflict/</guid>
+        <description>&lt;h2 id=&#34;introduction&#34;&gt;
+    &lt;a href=&#34;#introduction&#34; class=&#34;header-anchor&#34;&gt;#&lt;/a&gt;
+    Introduction
+&lt;/h2&gt;&lt;p&gt;The Apple M1 chip introduced a major change to Mac architecture, moving from the traditional Intel x86 architecture to ARM architecture. This change means for developers that many existing applications and dependent libraries need to adapt to the new &lt;code&gt;arm64&lt;/code&gt; architecture. In this blog, we’ll explore typical error messages you may encounter when using the iOS Simulator on an M1 Mac, explain the rationale behind them, and provide practical solutions.&lt;/p&gt;
+&lt;h2 id=&#34;m1-chip-and-simulator-compatibility-issues&#34;&gt;
+    &lt;a href=&#34;#m1-chip-and-simulator-compatibility-issues&#34; class=&#34;header-anchor&#34;&gt;#&lt;/a&gt;
+    M1 chip and simulator compatibility issues
+&lt;/h2&gt;&lt;h3 id=&#34;principle-analysis&#34;&gt;
+    &lt;a href=&#34;#principle-analysis&#34; class=&#34;header-anchor&#34;&gt;#&lt;/a&gt;
+    Principle analysis
+&lt;/h3&gt;&lt;p&gt;The M1 chip&amp;rsquo;s ARM architecture is significantly different from the x86 architecture found on earlier Macs. The M1 chip natively supports the &lt;code&gt;arm64&lt;/code&gt; architecture instead of the &lt;code&gt;x86_64&lt;/code&gt; architecture used by Intel chips. This change directly affects the development environment, especially when running the emulator.&lt;/p&gt;
+&lt;p&gt;On M1 Macs, the iOS simulator can run directly in the &lt;code&gt;arm64&lt;/code&gt; architecture without any conversion, which can improve performance. But this also brings a problem: many existing third-party libraries and dependencies are still only compiled for the &lt;code&gt;x86_64&lt;/code&gt; architecture and fail to provide an &lt;code&gt;arm64&lt;/code&gt; version.&lt;/p&gt;
+&lt;h3 id=&#34;error-reporting&#34;&gt;
+    &lt;a href=&#34;#error-reporting&#34; class=&#34;header-anchor&#34;&gt;#&lt;/a&gt;
+    Error reporting
+&lt;/h3&gt;&lt;p&gt;When developers use the simulator to run these libraries that only support &lt;code&gt;x86_64&lt;/code&gt; on an M1 Mac, they may encounter error messages similar to the following:&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;Building for &amp;#39;iOS-simulator&amp;#39;, but linking in object file built for &amp;#39;iOS&amp;#39;, incompatible with iOS-simulator arm64.
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;This indicates an attempt to run a library compiled only for the &lt;code&gt;x86_64&lt;/code&gt; architecture on an emulator for the &lt;code&gt;arm64&lt;/code&gt; architecture.&lt;/p&gt;
+&lt;h2 id=&#34;solution&#34;&gt;
+    &lt;a href=&#34;#solution&#34; class=&#34;header-anchor&#34;&gt;#&lt;/a&gt;
+    Solution
+&lt;/h2&gt;&lt;h3 id=&#34;using-excluded_archs&#34;&gt;
+    &lt;a href=&#34;#using-excluded_archs&#34; class=&#34;header-anchor&#34;&gt;#&lt;/a&gt;
+    Using &lt;code&gt;EXCLUDED_ARCHS&lt;/code&gt;
+&lt;/h3&gt;&lt;p&gt;The &lt;code&gt;EXCLUDED_ARCHS&lt;/code&gt; setting is used in Xcode to specify the architectures to exclude during compilation. By setting &lt;code&gt;EXCLUDED_ARCHS&lt;/code&gt; to &lt;code&gt;arm64&lt;/code&gt;, Xcode will not try to compile code for the &lt;code&gt;arm64&lt;/code&gt; architecture when compiling for the simulator, thus avoiding architecture mismatch issues.&lt;/p&gt;
+&lt;h3 id=&#34;specific-operations&#34;&gt;
+    &lt;a href=&#34;#specific-operations&#34; class=&#34;header-anchor&#34;&gt;#&lt;/a&gt;
+    Specific operations
+&lt;/h3&gt;&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;Open Xcode Project Settings&lt;/strong&gt;: Select the project file and look for the &lt;code&gt;Excluded Architectures&lt;/code&gt; setting in the Build Settings tab.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Set Exclude Architecture&lt;/strong&gt;: Add the &lt;code&gt;arm64&lt;/code&gt; value to the Debug and Release configurations to ensure that this architecture is excluded when the simulator is compiled.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;To set &lt;code&gt;Excluded Architectures&lt;/code&gt; for all CocoaPods dependencies, you can use the post-install hook in your project&amp;rsquo;s Podfile to apply this configuration globally. Doing this ensures that all libraries managed through CocoaPods will exclude the specified architecture. Here&amp;rsquo;s how to implement this setting in your Podfile:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;Open your Podfile.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;At the bottom of the file, add a &lt;code&gt;post_install&lt;/code&gt; hook.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Inside the hook, write a script to set &lt;code&gt;EXCLUDED_ARCHS&lt;/code&gt;.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Here is sample code on how to add this hook in the Podfile:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-ruby&#34; data-lang=&#34;ruby&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;#Podfile&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# Other Podfile configurations...&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;post_install &lt;span style=&#34;color:#66d9ef&#34;&gt;do&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;|&lt;/span&gt;installer&lt;span style=&#34;color:#f92672&#34;&gt;|&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  installer&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;generated_projects&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;each &lt;span style=&#34;color:#66d9ef&#34;&gt;do&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;|&lt;/span&gt;project&lt;span style=&#34;color:#f92672&#34;&gt;|&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    project&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;build_configurations&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;each &lt;span style=&#34;color:#66d9ef&#34;&gt;do&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;|&lt;/span&gt;config&lt;span style=&#34;color:#f92672&#34;&gt;|&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      &lt;span style=&#34;color:#75715e&#34;&gt;# Set to exclude arm64 architecture&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      config&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;build_settings&lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;EXCLUDED_ARCHS[sdk=iphonesimulator*]&amp;#39;&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;]&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;arm64&amp;#39;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;end&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#66d9ef&#34;&gt;end&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;end&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;This code loops through all generated Xcode projects in the &lt;code&gt;post_install&lt;/code&gt; hook and sets &lt;code&gt;EXCLUDED_ARCHS&lt;/code&gt; for each configuration, excluding the &lt;code&gt;arm64&lt;/code&gt; architecture only for the iPhone Simulator SDK. This means that when you run your project on the simulator, Xcode will ignore the &lt;code&gt;arm64&lt;/code&gt; architecture, helping resolve compatibility issues.&lt;/p&gt;
+&lt;p&gt;After making these changes, you need to run the &lt;code&gt;pod install&lt;/code&gt; or &lt;code&gt;pod update&lt;/code&gt; command to ensure that the changes are applied to your project. Doing this can help resolve architecture mismatch issues encountered when using the emulator on M1 Macs.&lt;/p&gt;
+&lt;h3 id=&#34;principle-description&#34;&gt;
+    &lt;a href=&#34;#principle-description&#34; class=&#34;header-anchor&#34;&gt;#&lt;/a&gt;
+    Principle description
+&lt;/h3&gt;&lt;p&gt;The idea behind this is to have Xcode ignore support for the &lt;code&gt;arm64&lt;/code&gt; architecture when building the app, which means it will use Rosetta 2 to emulate the &lt;code&gt;x86_64&lt;/code&gt; architecture, allowing the app to run on the simulator on an M1 Mac.&lt;/p&gt;
+&lt;h3 id=&#34;long-term-solution&#34;&gt;
+    &lt;a href=&#34;#long-term-solution&#34; class=&#34;header-anchor&#34;&gt;#&lt;/a&gt;
+    Long term solution
+&lt;/h3&gt;&lt;p&gt;While using &lt;code&gt;EXCLUDED_ARCHS&lt;/code&gt; can resolve compatibility issues, it is only a temporary solution. In the long term, library maintainers will need to update their code to ensure they support the &lt;code&gt;arm64&lt;/code&gt; architecture. As more developers move to M1 Macs, native support for the &lt;code&gt;arm64&lt;/code&gt; architecture becomes even more important.&lt;/p&gt;
+&lt;h2 id=&#34;conclusion&#34;&gt;
+    &lt;a href=&#34;#conclusion&#34; class=&#34;header-anchor&#34;&gt;#&lt;/a&gt;
+    Conclusion
+&lt;/h2&gt;&lt;p&gt;The introduction of the M1 chip had a profound impact on Mac application development, particularly in terms of processing architecture compatibility. Understanding how these compatibility issues work, and knowing how to work around them, is critical to keeping the development process flowing. As technology advances and the ecosystem matures, developers will need to adapt to this change, updating and optimizing their applications to take full advantage of the M1 chip. In the long term, library and tool maintainers will also update their products to natively support the new architecture, ultimately eliminating these compatibility issues. So while some temporary solutions may be needed to deal with architectural compatibility issues, we can also look forward to a more unified and efficient development environment that will make app development and running on all Apple devices smoother.&lt;/p&gt;
+</description>
+        </item>
+        
+    </channel>
 </rss>

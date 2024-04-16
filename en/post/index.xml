@@ -1,40 +1,419 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>Posts on UWin AI</title>
-    <link>https://ohdijkstra.github.io/en/post/</link>
-    <description>Recent content in Posts on UWin AI</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <language>en</language>
-    <lastBuildDate>Thu, 11 Apr 2024 12:02:52 +0800</lastBuildDate>
-    <atom:link href="https://ohdijkstra.github.io/en/post/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Resolve the simulator running error caused by CocoaPods dependency on arm64 architecture Mac which only supports x86 architecture</title>
-      <link>https://ohdijkstra.github.io/en/post/arm64-simulator-conflict/</link>
-      <pubDate>Thu, 11 Apr 2024 12:02:52 +0800</pubDate>
-      <guid>https://ohdijkstra.github.io/en/post/arm64-simulator-conflict/</guid>
-      <description>Introduction The Apple M1 chip introduced a major change to Mac architecture, moving from the traditional Intel x86 architecture to ARM architecture. This change means for developers that many existing applications and dependent libraries need to adapt to the new arm64 architecture. In this blog, we’ll explore typical error messages you may encounter when using the iOS Simulator on an M1 Mac, explain the rationale behind them, and provide practical solutions.</description>
-    </item>
-    <item>
-      <title>Freqtrade Algorithmic Trading Tutorial Concise</title>
-      <link>https://ohdijkstra.github.io/en/post/freqtrade-tutorial/</link>
-      <pubDate>Fri, 22 Mar 2024 13:27:39 +0800</pubDate>
-      <guid>https://ohdijkstra.github.io/en/post/freqtrade-tutorial/</guid>
-      <description>Introduction Freqtrade is an open-source cryptocurrency algorithmic trading software that allows traders to automate their trades with customized strategies. This tutorial is designed to introduce you to the basic concepts and operating procedures of Freqtrade in simple language and step-by-step analysis, so that you can understand and start using this tool for algorithmic trading.&#xA;Summary Introduction to Freqtrade: Learn what Freqtrade is and its main features. Environment Setup: How to install and configure Freqtrade.</description>
-    </item>
-    <item>
-      <title>How to quickly use Hugo to create your own website</title>
-      <link>https://ohdijkstra.github.io/en/post/about-hugo/</link>
-      <pubDate>Tue, 05 Mar 2024 11:01:24 +0800</pubDate>
-      <guid>https://ohdijkstra.github.io/en/post/about-hugo/</guid>
-      <description>In the Internet age, having a personal website has become standard for almost every technology enthusiast. It not only showcases your technology stack, but also shares your thoughts and insights. This article will guide you how to use Hugo - a fast, flexible static website generator - to build your personal website. We will start with the basic concepts, gradually deepen into the core features of Hugo, and finally lead you to complete the construction of a personalized website.</description>
-    </item>
-    <item>
-      <title>ChatGPT principle analysis</title>
-      <link>https://ohdijkstra.github.io/en/post/my-first-post/</link>
-      <pubDate>Mon, 04 Mar 2024 07:16:51 +0100</pubDate>
-      <guid>https://ohdijkstra.github.io/en/post/my-first-post/</guid>
-      <description>Welcome to our technology blog! Today, we will delve into the principles of ChatGPT, a natural language processing model developed by OpenAI. We will start with basic natural language processing concepts and gradually delve into the core principles of ChatGPT to help everyone better understand the working mechanism of this revolutionary technology.&#xA;Introduction In the world of artificial intelligence, natural language processing (NLP) technology occupies a very important position. It enables machines to understand, interpret and generate human language to achieve effective communication with humans.</description>
-    </item>
-  </channel>
+    <channel>
+        <title>Posts on UWin AI</title>
+        <link>https://ohdijkstra.github.io/en/post/</link>
+        <description>Recent content in Posts on UWin AI</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>en</language>
+        <lastBuildDate>Thu, 11 Apr 2024 12:02:52 +0800</lastBuildDate><atom:link href="https://ohdijkstra.github.io/en/post/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Resolve the simulator running error caused by CocoaPods dependency on arm64 architecture Mac which only supports x86 architecture</title>
+        <link>https://ohdijkstra.github.io/en/post/arm64-simulator-conflict/</link>
+        <pubDate>Thu, 11 Apr 2024 12:02:52 +0800</pubDate>
+        
+        <guid>https://ohdijkstra.github.io/en/post/arm64-simulator-conflict/</guid>
+        <description>&lt;h2 id=&#34;introduction&#34;&gt;
+    &lt;a href=&#34;#introduction&#34; class=&#34;header-anchor&#34;&gt;#&lt;/a&gt;
+    Introduction
+&lt;/h2&gt;&lt;p&gt;The Apple M1 chip introduced a major change to Mac architecture, moving from the traditional Intel x86 architecture to ARM architecture. This change means for developers that many existing applications and dependent libraries need to adapt to the new &lt;code&gt;arm64&lt;/code&gt; architecture. In this blog, we’ll explore typical error messages you may encounter when using the iOS Simulator on an M1 Mac, explain the rationale behind them, and provide practical solutions.&lt;/p&gt;
+&lt;h2 id=&#34;m1-chip-and-simulator-compatibility-issues&#34;&gt;
+    &lt;a href=&#34;#m1-chip-and-simulator-compatibility-issues&#34; class=&#34;header-anchor&#34;&gt;#&lt;/a&gt;
+    M1 chip and simulator compatibility issues
+&lt;/h2&gt;&lt;h3 id=&#34;principle-analysis&#34;&gt;
+    &lt;a href=&#34;#principle-analysis&#34; class=&#34;header-anchor&#34;&gt;#&lt;/a&gt;
+    Principle analysis
+&lt;/h3&gt;&lt;p&gt;The M1 chip&amp;rsquo;s ARM architecture is significantly different from the x86 architecture found on earlier Macs. The M1 chip natively supports the &lt;code&gt;arm64&lt;/code&gt; architecture instead of the &lt;code&gt;x86_64&lt;/code&gt; architecture used by Intel chips. This change directly affects the development environment, especially when running the emulator.&lt;/p&gt;
+&lt;p&gt;On M1 Macs, the iOS simulator can run directly in the &lt;code&gt;arm64&lt;/code&gt; architecture without any conversion, which can improve performance. But this also brings a problem: many existing third-party libraries and dependencies are still only compiled for the &lt;code&gt;x86_64&lt;/code&gt; architecture and fail to provide an &lt;code&gt;arm64&lt;/code&gt; version.&lt;/p&gt;
+&lt;h3 id=&#34;error-reporting&#34;&gt;
+    &lt;a href=&#34;#error-reporting&#34; class=&#34;header-anchor&#34;&gt;#&lt;/a&gt;
+    Error reporting
+&lt;/h3&gt;&lt;p&gt;When developers use the simulator to run these libraries that only support &lt;code&gt;x86_64&lt;/code&gt; on an M1 Mac, they may encounter error messages similar to the following:&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;Building for &amp;#39;iOS-simulator&amp;#39;, but linking in object file built for &amp;#39;iOS&amp;#39;, incompatible with iOS-simulator arm64.
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;This indicates an attempt to run a library compiled only for the &lt;code&gt;x86_64&lt;/code&gt; architecture on an emulator for the &lt;code&gt;arm64&lt;/code&gt; architecture.&lt;/p&gt;
+&lt;h2 id=&#34;solution&#34;&gt;
+    &lt;a href=&#34;#solution&#34; class=&#34;header-anchor&#34;&gt;#&lt;/a&gt;
+    Solution
+&lt;/h2&gt;&lt;h3 id=&#34;using-excluded_archs&#34;&gt;
+    &lt;a href=&#34;#using-excluded_archs&#34; class=&#34;header-anchor&#34;&gt;#&lt;/a&gt;
+    Using &lt;code&gt;EXCLUDED_ARCHS&lt;/code&gt;
+&lt;/h3&gt;&lt;p&gt;The &lt;code&gt;EXCLUDED_ARCHS&lt;/code&gt; setting is used in Xcode to specify the architectures to exclude during compilation. By setting &lt;code&gt;EXCLUDED_ARCHS&lt;/code&gt; to &lt;code&gt;arm64&lt;/code&gt;, Xcode will not try to compile code for the &lt;code&gt;arm64&lt;/code&gt; architecture when compiling for the simulator, thus avoiding architecture mismatch issues.&lt;/p&gt;
+&lt;h3 id=&#34;specific-operations&#34;&gt;
+    &lt;a href=&#34;#specific-operations&#34; class=&#34;header-anchor&#34;&gt;#&lt;/a&gt;
+    Specific operations
+&lt;/h3&gt;&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;Open Xcode Project Settings&lt;/strong&gt;: Select the project file and look for the &lt;code&gt;Excluded Architectures&lt;/code&gt; setting in the Build Settings tab.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Set Exclude Architecture&lt;/strong&gt;: Add the &lt;code&gt;arm64&lt;/code&gt; value to the Debug and Release configurations to ensure that this architecture is excluded when the simulator is compiled.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;To set &lt;code&gt;Excluded Architectures&lt;/code&gt; for all CocoaPods dependencies, you can use the post-install hook in your project&amp;rsquo;s Podfile to apply this configuration globally. Doing this ensures that all libraries managed through CocoaPods will exclude the specified architecture. Here&amp;rsquo;s how to implement this setting in your Podfile:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;Open your Podfile.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;At the bottom of the file, add a &lt;code&gt;post_install&lt;/code&gt; hook.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Inside the hook, write a script to set &lt;code&gt;EXCLUDED_ARCHS&lt;/code&gt;.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Here is sample code on how to add this hook in the Podfile:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-ruby&#34; data-lang=&#34;ruby&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;#Podfile&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# Other Podfile configurations...&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;post_install &lt;span style=&#34;color:#66d9ef&#34;&gt;do&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;|&lt;/span&gt;installer&lt;span style=&#34;color:#f92672&#34;&gt;|&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  installer&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;generated_projects&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;each &lt;span style=&#34;color:#66d9ef&#34;&gt;do&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;|&lt;/span&gt;project&lt;span style=&#34;color:#f92672&#34;&gt;|&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    project&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;build_configurations&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;each &lt;span style=&#34;color:#66d9ef&#34;&gt;do&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;|&lt;/span&gt;config&lt;span style=&#34;color:#f92672&#34;&gt;|&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      &lt;span style=&#34;color:#75715e&#34;&gt;# Set to exclude arm64 architecture&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      config&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;build_settings&lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;EXCLUDED_ARCHS[sdk=iphonesimulator*]&amp;#39;&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;]&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;arm64&amp;#39;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;end&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#66d9ef&#34;&gt;end&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;end&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;This code loops through all generated Xcode projects in the &lt;code&gt;post_install&lt;/code&gt; hook and sets &lt;code&gt;EXCLUDED_ARCHS&lt;/code&gt; for each configuration, excluding the &lt;code&gt;arm64&lt;/code&gt; architecture only for the iPhone Simulator SDK. This means that when you run your project on the simulator, Xcode will ignore the &lt;code&gt;arm64&lt;/code&gt; architecture, helping resolve compatibility issues.&lt;/p&gt;
+&lt;p&gt;After making these changes, you need to run the &lt;code&gt;pod install&lt;/code&gt; or &lt;code&gt;pod update&lt;/code&gt; command to ensure that the changes are applied to your project. Doing this can help resolve architecture mismatch issues encountered when using the emulator on M1 Macs.&lt;/p&gt;
+&lt;h3 id=&#34;principle-description&#34;&gt;
+    &lt;a href=&#34;#principle-description&#34; class=&#34;header-anchor&#34;&gt;#&lt;/a&gt;
+    Principle description
+&lt;/h3&gt;&lt;p&gt;The idea behind this is to have Xcode ignore support for the &lt;code&gt;arm64&lt;/code&gt; architecture when building the app, which means it will use Rosetta 2 to emulate the &lt;code&gt;x86_64&lt;/code&gt; architecture, allowing the app to run on the simulator on an M1 Mac.&lt;/p&gt;
+&lt;h3 id=&#34;long-term-solution&#34;&gt;
+    &lt;a href=&#34;#long-term-solution&#34; class=&#34;header-anchor&#34;&gt;#&lt;/a&gt;
+    Long term solution
+&lt;/h3&gt;&lt;p&gt;While using &lt;code&gt;EXCLUDED_ARCHS&lt;/code&gt; can resolve compatibility issues, it is only a temporary solution. In the long term, library maintainers will need to update their code to ensure they support the &lt;code&gt;arm64&lt;/code&gt; architecture. As more developers move to M1 Macs, native support for the &lt;code&gt;arm64&lt;/code&gt; architecture becomes even more important.&lt;/p&gt;
+&lt;h2 id=&#34;conclusion&#34;&gt;
+    &lt;a href=&#34;#conclusion&#34; class=&#34;header-anchor&#34;&gt;#&lt;/a&gt;
+    Conclusion
+&lt;/h2&gt;&lt;p&gt;The introduction of the M1 chip had a profound impact on Mac application development, particularly in terms of processing architecture compatibility. Understanding how these compatibility issues work, and knowing how to work around them, is critical to keeping the development process flowing. As technology advances and the ecosystem matures, developers will need to adapt to this change, updating and optimizing their applications to take full advantage of the M1 chip. In the long term, library and tool maintainers will also update their products to natively support the new architecture, ultimately eliminating these compatibility issues. So while some temporary solutions may be needed to deal with architectural compatibility issues, we can also look forward to a more unified and efficient development environment that will make app development and running on all Apple devices smoother.&lt;/p&gt;
+</description>
+        </item>
+        <item>
+        <title>Freqtrade Algorithmic Trading Tutorial Concise</title>
+        <link>https://ohdijkstra.github.io/en/post/freqtrade-tutorial/</link>
+        <pubDate>Fri, 22 Mar 2024 13:27:39 +0800</pubDate>
+        
+        <guid>https://ohdijkstra.github.io/en/post/freqtrade-tutorial/</guid>
+        <description>&lt;h2 id=&#34;introduction&#34;&gt;
+    &lt;a href=&#34;#introduction&#34; class=&#34;header-anchor&#34;&gt;#&lt;/a&gt;
+    Introduction
+&lt;/h2&gt;&lt;p&gt;Freqtrade is an open-source cryptocurrency algorithmic trading software that allows traders to automate their trades with customized strategies. This tutorial is designed to introduce you to the basic concepts and operating procedures of Freqtrade in simple language and step-by-step analysis, so that you can understand and start using this tool for algorithmic trading.&lt;/p&gt;
+&lt;h2 id=&#34;summary&#34;&gt;
+    &lt;a href=&#34;#summary&#34; class=&#34;header-anchor&#34;&gt;#&lt;/a&gt;
+    Summary
+&lt;/h2&gt;&lt;ol&gt;
+&lt;li&gt;Introduction to Freqtrade: Learn what Freqtrade is and its main features.&lt;/li&gt;
+&lt;li&gt;Environment Setup: How to install and configure Freqtrade.&lt;/li&gt;
+&lt;li&gt;Strategy Development: The basic components and development process of a strategy.&lt;/li&gt;
+&lt;li&gt;Backtesting and Optimization: How to test and optimize a trading strategy.&lt;/li&gt;
+&lt;li&gt;Real Trading: Apply the strategy to real trading.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;about-freqtrade&#34;&gt;
+    &lt;a href=&#34;#about-freqtrade&#34; class=&#34;header-anchor&#34;&gt;#&lt;/a&gt;
+    About Freqtrade
+&lt;/h2&gt;&lt;p&gt;Freqtrade is a Python-based algorithmic trading software that is primarily used in the cryptocurrency market. Its key features include an easy-to-use command-line interface, support for multiple exchanges, flexible strategy configuration, and effective data management. Users can write their own trading strategies, and Freqtrade will automatically execute trades based on these strategies.&lt;/p&gt;
+&lt;h2 id=&#34;environment-setup&#34;&gt;
+    &lt;a href=&#34;#environment-setup&#34; class=&#34;header-anchor&#34;&gt;#&lt;/a&gt;
+    Environment Setup
+&lt;/h2&gt;&lt;p&gt;The premise of Freqtrade&amp;rsquo;s use is the premise of setting up the environment, which ensures the infrastructure on which the software runs. This section will detail the Freqtrade installation process, the configuration file settings, and how to prepare the trading environment.&lt;/p&gt;
+&lt;h3 id=&#34;install-freqtrade&#34;&gt;
+    &lt;a href=&#34;#install-freqtrade&#34; class=&#34;header-anchor&#34;&gt;#&lt;/a&gt;
+    Install Freqtrade
+&lt;/h3&gt;&lt;p&gt;Installing Freqtrade involves several key steps to ensure that the software will run smoothly in your system.&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;System Requirements&lt;/strong&gt;: Make sure your operating system is capable of running Freqtrade. While Freqtrade supports a wide range of operating systems (such as Windows, macOS, and Linux), running on Linux generally provides the best performance and stability.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Install Python&lt;/strong&gt;: Freqtrade is written in Python, so a Python environment is required. It is recommended to use Python 3.7 or later to ensure compatibility and performance. You can download and install it from the Python official website (&lt;a class=&#34;link&#34; href=&#34;https://www.python.org/%29&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://www.python.org/)&lt;/a&gt;.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Clone Freqtrade repository: Clone Freqtrade&amp;rsquo;s GitHub repository to your local computer via Git. If you don&amp;rsquo;t have Git installed, you can download it from the Git official website (&lt;a class=&#34;link&#34; href=&#34;https://git-scm.com/%29&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://git-scm.com/)&lt;/a&gt;. Use the following command to clone the repository:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;git clone https://github.com/freqtrade/freqtrade.git
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;This will create a directory on your machine containing the Freqtrade source code.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Installation Dependencies: Freqtrade has a range of Python library dependencies. In the Freqtrade directory, run the following command to install these dependencies:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;cd freqtrade
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;pip install -r requirements.txt
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;This will ensure that all the necessary libraries are installed in your Python environment.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;configure-freqtrade&#34;&gt;
+    &lt;a href=&#34;#configure-freqtrade&#34; class=&#34;header-anchor&#34;&gt;#&lt;/a&gt;
+    Configure Freqtrade
+&lt;/h3&gt;&lt;p&gt;Configuration is key to Freqtrade&amp;rsquo;s proper functioning, involving aspects such as API connection, trading parameters and strategy selection.&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Profile&lt;/strong&gt;: Freqtrade uses a configuration file in JSON format. You can start with the &amp;lsquo;config.json.example&amp;rsquo; sample file, copy and rename it to &amp;lsquo;config.json&amp;rsquo;, and edit it according to your needs.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Set up an API key: In order for Freqtrade to be able to execute trades on the exchange, you will need to provide an API key. It is usually generated on your exchange account page and filled in the appropriate place in the configuration file.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Select Trading Pair and Amount: In the profile, you can set the currency pair you want to trade and the amount or percentage to be used for each trade.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Other configurations&lt;/strong&gt;: including but not limited to risk management parameters (such as stop loss, take profit settings), trading time intervals, log records, etc. These parameters will be set according to your trading strategy and risk appetite.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;prepare-the-trading-environment&#34;&gt;
+    &lt;a href=&#34;#prepare-the-trading-environment&#34; class=&#34;header-anchor&#34;&gt;#&lt;/a&gt;
+    Prepare the trading environment
+&lt;/h3&gt;&lt;p&gt;Once you&amp;rsquo;ve installed and configured Freqtrade, you&amp;rsquo;ll need to prepare your trading environment and make sure everything is set up correctly.&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;Test Installation: Run Freqtrade&amp;rsquo;s test command to verify that the installation was successful, for example:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;freqtrade test
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;If everything is fine, the command should be executed without errors.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Download Historical Data: In order to backtest or optimize your strategy, you need to download historical trading data. Freqtrade provides commands to help you download your data:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;freqtrade download-data --timeframe 1h
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;This downloads historical data for the one-hour time frame.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Run Dry-run: Before actually trading, it is recommended to run Freqtrade in Dry-run mode, which will simulate the trading process without actually executing it. This is a great way to check if your policies and configurations are correct.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;strategy-development&#34;&gt;
+    &lt;a href=&#34;#strategy-development&#34; class=&#34;header-anchor&#34;&gt;#&lt;/a&gt;
+    Strategy Development
+&lt;/h2&gt;&lt;p&gt;Strategy development is a core part of Freqtrade&amp;rsquo;s use, which determines the intelligence and success rate of trading behavior. This section takes a deep dive into what constitutes a strategy, how to develop it, and how to test and optimize your strategy.&lt;/p&gt;
+&lt;h3 id=&#34;policy-structure&#34;&gt;
+    &lt;a href=&#34;#policy-structure&#34; class=&#34;header-anchor&#34;&gt;#&lt;/a&gt;
+    Policy Structure
+&lt;/h3&gt;&lt;p&gt;In Freqtrade, a strategy is a Python class that contains specific functions and settings. A typical policy file contains the following sections:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Metadata Definition: Includes the policy&amp;rsquo;s name, author, version number, and applicable time frame. This information helps you identify and manage policies.&lt;/li&gt;
+&lt;li&gt;Indicator Settings: One of the most important parts of the strategy that defines the technical indicators used to generate trading signals.&lt;/li&gt;
+&lt;li&gt;Buy and Sell Signal Logic: Conditional logic that defines when to buy and sell based on the results of the indicator.&lt;/li&gt;
+&lt;li&gt;Stop-Loss and Take Profit: Set the risk management measures of the strategy, such as stop-loss and take-profit points.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;development-process&#34;&gt;
+    &lt;a href=&#34;#development-process&#34; class=&#34;header-anchor&#34;&gt;#&lt;/a&gt;
+    Development Process
+&lt;/h3&gt;&lt;p&gt;The process of strategy development can be divided into the following steps:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;Understand the market and choose indicators: First of all, you need to have a deep understanding of the market, and choose the right technical indicators based on this understanding. For example, if you believe that the market has a trending character, you might choose trend indicators such as moving averages (MAs), relative strength index (RSI), etc.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Write Strategy Logic: Write buy and sell conditions based on the selected indicator. This usually involves programming skills, the need to implement the calculation of indicators and the logical judgment of signals in the strategy document.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Configure Strategy File: Configure the required parameters in the strategy class, such as the time period of the indicator, the threshold of buying and selling conditions, etc.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;test-and-optimize-strategies&#34;&gt;
+    &lt;a href=&#34;#test-and-optimize-strategies&#34; class=&#34;header-anchor&#34;&gt;#&lt;/a&gt;
+    Test and Optimize Strategies
+&lt;/h3&gt;&lt;p&gt;Once a strategy is developed, it needs to be backtested to verify its effectiveness and profitability. Freqtrade offers a powerful backtesting tool that allows you to test strategies on historical data.&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;Backtesting: Run a strategy using Freqtrade&amp;rsquo;s backtesting feature to see how it performs on historical data. This can be done with a command-line tool, for example:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;freqtrade backtesting --strategy YourStrategy
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;This will show the performance of the strategy, including important metrics such as profit and loss, maximum drawdown, etc.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Result Analysis: Drill down into the backtesting results to identify your strategy&amp;rsquo;s strengths and weaknesses. Evaluate strategy performance based on metrics such as return curve, win rate, profit and loss ratio, and more.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Optimization: Optimize the strategy parameters based on the backtest results. Freqtrade supports the strategy optimization function, which can automatically adjust the parameters to find the best configuration.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;policy-example&#34;&gt;
+    &lt;a href=&#34;#policy-example&#34; class=&#34;header-anchor&#34;&gt;#&lt;/a&gt;
+    Policy Example
+&lt;/h3&gt;&lt;p&gt;Let&amp;rsquo;s say we&amp;rsquo;re developing a strategy based on a simple moving average (SMA) crossover, which we might do like this:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Define indicator: Calculate SMAs with two different periods (e.g. SMA30 and SMA100).&lt;/li&gt;
+&lt;li&gt;Buy logic: A buy signal is given when the short-term SMA (SMA30) crosses the long-term SMA (SMA100) from below.&lt;/li&gt;
+&lt;li&gt;Sell logic: A sell signal is given when the short-term SMA (SMA30) crosses the long-term SMA (SMA100) from above.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;With such logic, we can construct a simple trend-following strategy. Then, through the backtesting and optimization process, we can refine this strategy, improve its performance, and ultimately form an efficient automated trading strategy.&lt;/p&gt;
+&lt;h2 id=&#34;real-trading&#34;&gt;
+    &lt;a href=&#34;#real-trading&#34; class=&#34;header-anchor&#34;&gt;#&lt;/a&gt;
+    Real Trading
+&lt;/h2&gt;&lt;p&gt;Real trading is the process of executing a strategy in a real market environment, which is the ultimate goal of algorithmic trading. Implementing real trading in Freqtrade requires careful and precise preparation. This section will explore in detail how to safely and effectively deploy your strategy into live trading.&lt;/p&gt;
+&lt;h3 id=&#34;preparation-phase&#34;&gt;
+    &lt;a href=&#34;#preparation-phase&#34; class=&#34;header-anchor&#34;&gt;#&lt;/a&gt;
+    Preparation Phase
+&lt;/h3&gt;&lt;p&gt;Before starting a real trade, you need to make sure of the following:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Strategy Validation&lt;/strong&gt;: Make sure that your strategy is fully backtested and optimized, and that it performs well in Dry-run mode.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Risk Management: Define your risk tolerance and set stop-loss and take-profit points accordingly. These settings should be clearly defined in the policy to be automated.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Money Management: Decide how much money to use for trading. You shouldn&amp;rsquo;t invest more money than you can afford. In Freqtrade, the amount of funds used can be set through the profile.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;start-live-trading&#34;&gt;
+    &lt;a href=&#34;#start-live-trading&#34; class=&#34;header-anchor&#34;&gt;#&lt;/a&gt;
+    Start live trading
+&lt;/h3&gt;&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Configure Real Trading Environment&lt;/strong&gt;: Switch to real mode in the configuration file and make sure that all settings (such as API key, fund allocation, trading pairs, etc.) are correct.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Monitoring and Maintenance: Once live trading is initiated, it is important to continuously monitor trading activity and system performance. While Freqtrade can automate the execution of trades, it is important to monitor trading conditions and market changes.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Logging&lt;/strong&gt;: Check Freqtrade&amp;rsquo;s log files regularly, this can help you understand trading behavior and possible issues.&lt;/li&gt;
+&lt;li&gt;Performance Evaluation: Regularly evaluate the performance of your trading strategy to ensure that it still meets your intended trading objectives and risk management requirements.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Respond to market changes: Market conditions are constantly changing, and your strategy may need to adjust to accommodate these changes. Keeping your strategy updated and sensitive to market trends can improve your chances of long-term success.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;risk-control&#34;&gt;
+    &lt;a href=&#34;#risk-control&#34; class=&#34;header-anchor&#34;&gt;#&lt;/a&gt;
+    Risk Control
+&lt;/h3&gt;&lt;p&gt;In real trading, risk control is crucial. This includes:
+:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Set a reasonable stop loss: to prevent large losses.&lt;/li&gt;
+&lt;li&gt;Diversification: Don&amp;rsquo;t put all your money into a single trade or market.&lt;/li&gt;
+&lt;li&gt;Avoid overtrading: Trade according to the logic of the strategy and avoid unnecessary trading due to emotional decisions.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;optimize--iterate&#34;&gt;
+    &lt;a href=&#34;#optimize--iterate&#34; class=&#34;header-anchor&#34;&gt;#&lt;/a&gt;
+    Optimize &amp;amp; Iterate
+&lt;/h3&gt;&lt;p&gt;Even in real trading, strategies should be continuously sought to optimize and improve. The market is dynamic, and the strategy should also be dynamically adjusted:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Collect Trading Data: Analyze live trading data to understand how your strategy performs in the real market.&lt;/li&gt;
+&lt;li&gt;Periodic Backtesting: Regularly backtesting strategies with the latest market data to ensure their effectiveness.&lt;/li&gt;
+&lt;li&gt;Timely Adjustments: Make necessary adjustments based on market changes and strategy performance.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;With the above steps, you can start trading algorithms with Freqtrade. While this tutorial is only a brief introduction to Freqtrade, it gives you enough information to start exploring this powerful trading tool. Further in-depth study and practice will help you better understand and utilize Freqtrade&amp;rsquo;s features to optimize your trading strategy.&lt;/p&gt;
+</description>
+        </item>
+        <item>
+        <title>How to quickly use Hugo to create your own website</title>
+        <link>https://ohdijkstra.github.io/en/post/about-hugo/</link>
+        <pubDate>Tue, 05 Mar 2024 11:01:24 +0800</pubDate>
+        
+        <guid>https://ohdijkstra.github.io/en/post/about-hugo/</guid>
+        <description>&lt;p&gt;In the Internet age, having a personal website has become standard for almost every technology enthusiast. It not only showcases your technology stack, but also shares your thoughts and insights. This article will guide you how to use Hugo - a fast, flexible static website generator - to build your personal website. We will start with the basic concepts, gradually deepen into the core features of Hugo, and finally lead you to complete the construction of a personalized website.&lt;/p&gt;
+&lt;h2 id=&#34;introduction&#34;&gt;
+    &lt;a href=&#34;#introduction&#34; class=&#34;header-anchor&#34;&gt;#&lt;/a&gt;
+    Introduction
+&lt;/h2&gt;&lt;p&gt;Hugo is a static website generator written in Go language, which is famous for its fast build speed and flexible configuration. Compared with dynamic websites, static websites do not rely on databases, and pages are pre-generated on the server, which can provide faster loading speeds and higher security. Hugo not only helps you quickly generate a website, but also makes website design simple and elegant through rich themes and templates.&lt;/p&gt;
+&lt;h2 id=&#34;install-hugo&#34;&gt;
+    &lt;a href=&#34;#install-hugo&#34; class=&#34;header-anchor&#34;&gt;#&lt;/a&gt;
+    Install Hugo
+&lt;/h2&gt;&lt;p&gt;Installing Hugo is a simple and straightforward process. You can download the installation package for the corresponding platform through the package manager or directly from Hugo&amp;rsquo;s official website.&lt;/p&gt;
+&lt;h3 id=&#34;windows&#34;&gt;
+    &lt;a href=&#34;#windows&#34; class=&#34;header-anchor&#34;&gt;#&lt;/a&gt;
+    Windows
+&lt;/h3&gt;&lt;p&gt;If you are using Windows, you can install it through Chocolatey:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;choco install hugo -confirm
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;macos&#34;&gt;
+    &lt;a href=&#34;#macos&#34; class=&#34;header-anchor&#34;&gt;#&lt;/a&gt;
+    macOS
+&lt;/h3&gt;&lt;p&gt;For macOS users, you can use Homebrew to install:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;brew install hugo
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;linux&#34;&gt;
+    &lt;a href=&#34;#linux&#34; class=&#34;header-anchor&#34;&gt;#&lt;/a&gt;
+    Linux
+&lt;/h3&gt;&lt;p&gt;Linux users can use package managers such as apt or yum. Here, apt is used as an example:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sudo apt-get install hugo
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;After the installation is complete, you can verify whether the installation was successful by running &lt;code&gt;hugo version&lt;/code&gt;.&lt;/p&gt;
+&lt;h2 id=&#34;create-your-first-website&#34;&gt;
+    &lt;a href=&#34;#create-your-first-website&#34; class=&#34;header-anchor&#34;&gt;#&lt;/a&gt;
+    Create your first website
+&lt;/h2&gt;&lt;p&gt;After installing Hugo, you can start creating your first website immediately. Open a terminal or command prompt and run the following command:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;hugo new site my-first-website
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;This line of command will create a new directory called &lt;code&gt;my-first-website&lt;/code&gt; and initialize an empty Hugo website structure.&lt;/p&gt;
+&lt;h2 id=&#34;select-a-theme&#34;&gt;
+    &lt;a href=&#34;#select-a-theme&#34; class=&#34;header-anchor&#34;&gt;#&lt;/a&gt;
+    Select a theme
+&lt;/h2&gt;&lt;p&gt;The Hugo community provides many beautiful themes, and you can find them on the &lt;a class=&#34;link&#34; href=&#34;https://themes.gohugo.io/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Hugo Themes&lt;/a&gt; website. Choose a theme you like and clone it into the &lt;code&gt;themes&lt;/code&gt; directory of your website. Take the Ananke theme as an example:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;cd my-first-website
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;git submodule add https://github.com/theNewDynamic/gohugo-theme-ananke.git themes/ananke
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Next, edit your website’s configuration file &lt;code&gt;config.toml&lt;/code&gt; and set the theme to Ananke:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-toml&#34; data-lang=&#34;toml&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;theme&lt;/span&gt; = &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;ananke&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;add-content&#34;&gt;
+    &lt;a href=&#34;#add-content&#34; class=&#34;header-anchor&#34;&gt;#&lt;/a&gt;
+    Add content
+&lt;/h2&gt;&lt;p&gt;Now that your website has a theme, it’s time to add some content. Hugo manages content through Markdown files, so you can easily write and format your articles.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;hugo new posts/my-first-post.md
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;This will create a new Markdown file in the &lt;code&gt;content/posts&lt;/code&gt; directory. Open this file with your favorite text editor and you&amp;rsquo;ll see that Hugo has filled in some basic prepend metadata for you. Below this, you can start writing your article content.&lt;/p&gt;
+&lt;h2 id=&#34;local-preview-website&#34;&gt;
+    &lt;a href=&#34;#local-preview-website&#34; class=&#34;header-anchor&#34;&gt;#&lt;/a&gt;
+    Local preview website
+&lt;/h2&gt;&lt;p&gt;Before publishing your site, you may want to preview it locally. Hugo provides a built-in server that allows you to see changes in real time:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;hugo server -D
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;The &lt;code&gt;-D&lt;/code&gt; parameter will cause Hugo to include the contents of the draft state. Open your browser and visit &lt;code&gt;http://localhost:1313&lt;/code&gt;, and you will be able to see your website.&lt;/p&gt;
+&lt;h2 id=&#34;deploy-your-website&#34;&gt;
+    &lt;a href=&#34;#deploy-your-website&#34; class=&#34;header-anchor&#34;&gt;#&lt;/a&gt;
+    Deploy your website
+&lt;/h2&gt;&lt;p&gt;When you are satisfied with your website and ready to publish it to the Internet, you need to generate the static files and upload them to a web server or use a static website hosting service such as GitHub Pages or Netlify.&lt;/p&gt;
+&lt;p&gt;Run the following command to generate static content:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;hugo -D
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;This will generate your website in the &lt;code&gt;public&lt;/code&gt; directory. Just upload this directory to your server or use any service that supports static website hosting.&lt;/p&gt;
+&lt;h2 id=&#34;conclusion&#34;&gt;
+    &lt;a href=&#34;#conclusion&#34; class=&#34;header-anchor&#34;&gt;#&lt;/a&gt;
+    Conclusion
+&lt;/h2&gt;&lt;p&gt;Congratulations, you now have a personal website built with Hugo! Through the above steps, we not only introduced the basic concepts and installation process of Hugo, but also guided you step by step to create, design, add content, and finally deploy your website. Hugo&amp;rsquo;s flexibility and speed provide individuals and businesses with a powerful tool to quickly build and manage websites. As you further explore Hugo, you&amp;rsquo;ll be able to take advantage of its advanced features, such as custom themes, shortcodes, multi-language support, and more, to enrich your website&amp;rsquo;s functionality and improve your user experience.&lt;/p&gt;
+&lt;p&gt;Keep exploring and make your website more personalized and feature-rich!&lt;/p&gt;
+</description>
+        </item>
+        <item>
+        <title>ChatGPT principle analysis</title>
+        <link>https://ohdijkstra.github.io/en/post/my-first-post/</link>
+        <pubDate>Mon, 04 Mar 2024 07:16:51 +0100</pubDate>
+        
+        <guid>https://ohdijkstra.github.io/en/post/my-first-post/</guid>
+        <description>&lt;p&gt;Welcome to our technology blog! Today, we will delve into the principles of ChatGPT, a natural language processing model developed by OpenAI. We will start with basic natural language processing concepts and gradually delve into the core principles of ChatGPT to help everyone better understand the working mechanism of this revolutionary technology.&lt;/p&gt;
+&lt;h2 id=&#34;introduction&#34;&gt;
+    &lt;a href=&#34;#introduction&#34; class=&#34;header-anchor&#34;&gt;#&lt;/a&gt;
+    Introduction
+&lt;/h2&gt;&lt;p&gt;In the world of artificial intelligence, natural language processing (NLP) technology occupies a very important position. It enables machines to understand, interpret and generate human language to achieve effective communication with humans. ChatGPT, as the latest generation of language processing model, has attracted widespread attention and discussion through its amazing language understanding and generation capabilities.&lt;/p&gt;
+&lt;h2 id=&#34;introduction-to-natural-language-processing&#34;&gt;
+    &lt;a href=&#34;#introduction-to-natural-language-processing&#34; class=&#34;header-anchor&#34;&gt;#&lt;/a&gt;
+    Introduction to natural language processing
+&lt;/h2&gt;&lt;p&gt;The core goal of natural language processing technology is to enable machines to understand and generate language like humans. This involves multiple subfields, including syntax analysis, semantic understanding, sentiment analysis, etc. Early NLP technology relied on a large number of rules and dictionaries, but this method was often inadequate when dealing with complex language phenomena.&lt;/p&gt;
+&lt;p&gt;With the development of deep learning technology, revolutionary changes have taken place in the field of NLP. Models such as BERT and GPT are trained based on large-scale data sets, which can capture the deep structure and meaning of language, greatly improving language processing capabilities.&lt;/p&gt;
+&lt;h2 id=&#34;introduction-to-gpt-model&#34;&gt;
+    &lt;a href=&#34;#introduction-to-gpt-model&#34; class=&#34;header-anchor&#34;&gt;#&lt;/a&gt;
+    Introduction to GPT model
+&lt;/h2&gt;&lt;p&gt;GPT (Generative Pre-trained Transformer) is a pre-trained language generation model based on the Transformer architecture. It is first pre-trained on large-scale text datasets to learn the general patterns and structures of language, and then fine-tuned on specific tasks to achieve a high degree of task customization.&lt;/p&gt;
+&lt;h3 id=&#34;transformer-architecture&#34;&gt;
+    &lt;a href=&#34;#transformer-architecture&#34; class=&#34;header-anchor&#34;&gt;#&lt;/a&gt;
+    Transformer Architecture
+&lt;/h3&gt;&lt;p&gt;The Transformer model is the core of GPT, which was proposed by Vaswani et al. in 2017. Transformer is entirely based on the Self-Attention Mechanism, which enables the model to effectively capture long-distance dependencies when processing sequence data.&lt;/p&gt;
+&lt;p&gt;The mathematical representation of the self-attention mechanism is as follows:&lt;/p&gt;
+&lt;p&gt;$$
+\text{Attention}(Q, K, V) = \text{softmax}\left(\frac{QK^T}{\sqrt{d_k}}\right)V
+$$&lt;/p&gt;
+&lt;p&gt;Among them, (Q), (K), and (V) represent the query (Query), key (Key), and value (Value) respectively, and (d_k) is the dimension of the key. This mechanism allows the model to take into account all other words in the sentence when generating each word, thereby better understanding contextual relationships.&lt;/p&gt;
+&lt;h3 id=&#34;pre-training-and-fine-tuning&#34;&gt;
+    &lt;a href=&#34;#pre-training-and-fine-tuning&#34; class=&#34;header-anchor&#34;&gt;#&lt;/a&gt;
+    Pre-training and fine-tuning
+&lt;/h3&gt;&lt;p&gt;The training of the GPT model is divided into two stages: pre-training and fine-tuning. In the pre-training stage, the model is trained on a large amount of unlabeled text to learn general knowledge of the language. In the fine-tuning phase, the model is further trained on labeled data for specific tasks to adapt to specific application scenarios.&lt;/p&gt;
+&lt;h2 id=&#34;how-chatgpt-works&#34;&gt;
+    &lt;a href=&#34;#how-chatgpt-works&#34; class=&#34;header-anchor&#34;&gt;#&lt;/a&gt;
+    How ChatGPT works
+&lt;/h2&gt;&lt;p&gt;ChatGPT is optimized and customized based on GPT to make it more suitable for chat robot scenarios. It is trained on large-scale dialogue data, enabling the model to generate coherent and logical dialogue text.&lt;/p&gt;
+&lt;h3 id=&#34;dialogue-understanding&#34;&gt;
+    &lt;a href=&#34;#dialogue-understanding&#34; class=&#34;header-anchor&#34;&gt;#&lt;/a&gt;
+    Dialogue Understanding
+&lt;/h3&gt;&lt;p&gt;ChatGPT generates responses by understanding context. It takes into account not only the current input, but also the previous conversation history, which makes the generated responses more natural and relevant.&lt;/p&gt;
+&lt;h3 id=&#34;generate-strategy&#34;&gt;
+    &lt;a href=&#34;#generate-strategy&#34; class=&#34;header-anchor&#34;&gt;#&lt;/a&gt;
+    Generate strategy
+&lt;/h3&gt;&lt;p&gt;ChatGPT uses a variety of strategies to optimize output when generating text, including temperature adjustment, top-k sampling, etc. These strategies help the model avoid generating irrelevant or inappropriate text while maintaining text diversity. content.&lt;/p&gt;
+&lt;h2 id=&#34;conclusion&#34;&gt;
+    &lt;a href=&#34;#conclusion&#34; class=&#34;header-anchor&#34;&gt;#&lt;/a&gt;
+    Conclusion
+&lt;/h2&gt;&lt;p&gt;By in-depth analysis of the principles of ChatGPT, we can see how it has made breakthroughs in the field of natural language processing. From the basic Transformer architecture to complex dialogue understanding and text generation strategies, ChatGPT demonstrates the high level of development of current AI technology. Although there are still many challenges and limitations, ChatGPT and the technology behind it undoubtedly provide new possibilities for future human-computer interaction.&lt;/p&gt;
+&lt;p&gt;I hope this blog can help you better understand the principles and working mechanism of ChatGPT. Technology is constantly advancing, and we will continue to explore and share more cutting-edge knowledge. Thanks for reading!&lt;/p&gt;
+</description>
+        </item>
+        
+    </channel>
 </rss>

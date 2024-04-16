@@ -1,19 +1,216 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>BlockChain on UWin AI</title>
-    <link>https://ohdijkstra.github.io/en/tags/blockchain/</link>
-    <description>Recent content in BlockChain on UWin AI</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <language>en</language>
-    <lastBuildDate>Fri, 22 Mar 2024 13:27:39 +0800</lastBuildDate>
-    <atom:link href="https://ohdijkstra.github.io/en/tags/blockchain/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Freqtrade Algorithmic Trading Tutorial Concise</title>
-      <link>https://ohdijkstra.github.io/en/post/freqtrade-tutorial/</link>
-      <pubDate>Fri, 22 Mar 2024 13:27:39 +0800</pubDate>
-      <guid>https://ohdijkstra.github.io/en/post/freqtrade-tutorial/</guid>
-      <description>Introduction Freqtrade is an open-source cryptocurrency algorithmic trading software that allows traders to automate their trades with customized strategies. This tutorial is designed to introduce you to the basic concepts and operating procedures of Freqtrade in simple language and step-by-step analysis, so that you can understand and start using this tool for algorithmic trading.&#xA;Summary Introduction to Freqtrade: Learn what Freqtrade is and its main features. Environment Setup: How to install and configure Freqtrade.</description>
-    </item>
-  </channel>
+    <channel>
+        <title>BlockChain on UWin AI</title>
+        <link>https://ohdijkstra.github.io/en/tags/blockchain/</link>
+        <description>Recent content in BlockChain on UWin AI</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>en</language>
+        <lastBuildDate>Fri, 22 Mar 2024 13:27:39 +0800</lastBuildDate><atom:link href="https://ohdijkstra.github.io/en/tags/blockchain/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Freqtrade Algorithmic Trading Tutorial Concise</title>
+        <link>https://ohdijkstra.github.io/en/post/freqtrade-tutorial/</link>
+        <pubDate>Fri, 22 Mar 2024 13:27:39 +0800</pubDate>
+        
+        <guid>https://ohdijkstra.github.io/en/post/freqtrade-tutorial/</guid>
+        <description>&lt;h2 id=&#34;introduction&#34;&gt;
+    &lt;a href=&#34;#introduction&#34; class=&#34;header-anchor&#34;&gt;#&lt;/a&gt;
+    Introduction
+&lt;/h2&gt;&lt;p&gt;Freqtrade is an open-source cryptocurrency algorithmic trading software that allows traders to automate their trades with customized strategies. This tutorial is designed to introduce you to the basic concepts and operating procedures of Freqtrade in simple language and step-by-step analysis, so that you can understand and start using this tool for algorithmic trading.&lt;/p&gt;
+&lt;h2 id=&#34;summary&#34;&gt;
+    &lt;a href=&#34;#summary&#34; class=&#34;header-anchor&#34;&gt;#&lt;/a&gt;
+    Summary
+&lt;/h2&gt;&lt;ol&gt;
+&lt;li&gt;Introduction to Freqtrade: Learn what Freqtrade is and its main features.&lt;/li&gt;
+&lt;li&gt;Environment Setup: How to install and configure Freqtrade.&lt;/li&gt;
+&lt;li&gt;Strategy Development: The basic components and development process of a strategy.&lt;/li&gt;
+&lt;li&gt;Backtesting and Optimization: How to test and optimize a trading strategy.&lt;/li&gt;
+&lt;li&gt;Real Trading: Apply the strategy to real trading.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;about-freqtrade&#34;&gt;
+    &lt;a href=&#34;#about-freqtrade&#34; class=&#34;header-anchor&#34;&gt;#&lt;/a&gt;
+    About Freqtrade
+&lt;/h2&gt;&lt;p&gt;Freqtrade is a Python-based algorithmic trading software that is primarily used in the cryptocurrency market. Its key features include an easy-to-use command-line interface, support for multiple exchanges, flexible strategy configuration, and effective data management. Users can write their own trading strategies, and Freqtrade will automatically execute trades based on these strategies.&lt;/p&gt;
+&lt;h2 id=&#34;environment-setup&#34;&gt;
+    &lt;a href=&#34;#environment-setup&#34; class=&#34;header-anchor&#34;&gt;#&lt;/a&gt;
+    Environment Setup
+&lt;/h2&gt;&lt;p&gt;The premise of Freqtrade&amp;rsquo;s use is the premise of setting up the environment, which ensures the infrastructure on which the software runs. This section will detail the Freqtrade installation process, the configuration file settings, and how to prepare the trading environment.&lt;/p&gt;
+&lt;h3 id=&#34;install-freqtrade&#34;&gt;
+    &lt;a href=&#34;#install-freqtrade&#34; class=&#34;header-anchor&#34;&gt;#&lt;/a&gt;
+    Install Freqtrade
+&lt;/h3&gt;&lt;p&gt;Installing Freqtrade involves several key steps to ensure that the software will run smoothly in your system.&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;System Requirements&lt;/strong&gt;: Make sure your operating system is capable of running Freqtrade. While Freqtrade supports a wide range of operating systems (such as Windows, macOS, and Linux), running on Linux generally provides the best performance and stability.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Install Python&lt;/strong&gt;: Freqtrade is written in Python, so a Python environment is required. It is recommended to use Python 3.7 or later to ensure compatibility and performance. You can download and install it from the Python official website (&lt;a class=&#34;link&#34; href=&#34;https://www.python.org/%29&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://www.python.org/)&lt;/a&gt;.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Clone Freqtrade repository: Clone Freqtrade&amp;rsquo;s GitHub repository to your local computer via Git. If you don&amp;rsquo;t have Git installed, you can download it from the Git official website (&lt;a class=&#34;link&#34; href=&#34;https://git-scm.com/%29&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://git-scm.com/)&lt;/a&gt;. Use the following command to clone the repository:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;git clone https://github.com/freqtrade/freqtrade.git
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;This will create a directory on your machine containing the Freqtrade source code.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Installation Dependencies: Freqtrade has a range of Python library dependencies. In the Freqtrade directory, run the following command to install these dependencies:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;cd freqtrade
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;pip install -r requirements.txt
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;This will ensure that all the necessary libraries are installed in your Python environment.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;configure-freqtrade&#34;&gt;
+    &lt;a href=&#34;#configure-freqtrade&#34; class=&#34;header-anchor&#34;&gt;#&lt;/a&gt;
+    Configure Freqtrade
+&lt;/h3&gt;&lt;p&gt;Configuration is key to Freqtrade&amp;rsquo;s proper functioning, involving aspects such as API connection, trading parameters and strategy selection.&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Profile&lt;/strong&gt;: Freqtrade uses a configuration file in JSON format. You can start with the &amp;lsquo;config.json.example&amp;rsquo; sample file, copy and rename it to &amp;lsquo;config.json&amp;rsquo;, and edit it according to your needs.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Set up an API key: In order for Freqtrade to be able to execute trades on the exchange, you will need to provide an API key. It is usually generated on your exchange account page and filled in the appropriate place in the configuration file.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Select Trading Pair and Amount: In the profile, you can set the currency pair you want to trade and the amount or percentage to be used for each trade.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Other configurations&lt;/strong&gt;: including but not limited to risk management parameters (such as stop loss, take profit settings), trading time intervals, log records, etc. These parameters will be set according to your trading strategy and risk appetite.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;prepare-the-trading-environment&#34;&gt;
+    &lt;a href=&#34;#prepare-the-trading-environment&#34; class=&#34;header-anchor&#34;&gt;#&lt;/a&gt;
+    Prepare the trading environment
+&lt;/h3&gt;&lt;p&gt;Once you&amp;rsquo;ve installed and configured Freqtrade, you&amp;rsquo;ll need to prepare your trading environment and make sure everything is set up correctly.&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;Test Installation: Run Freqtrade&amp;rsquo;s test command to verify that the installation was successful, for example:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;freqtrade test
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;If everything is fine, the command should be executed without errors.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Download Historical Data: In order to backtest or optimize your strategy, you need to download historical trading data. Freqtrade provides commands to help you download your data:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;freqtrade download-data --timeframe 1h
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;This downloads historical data for the one-hour time frame.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Run Dry-run: Before actually trading, it is recommended to run Freqtrade in Dry-run mode, which will simulate the trading process without actually executing it. This is a great way to check if your policies and configurations are correct.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;strategy-development&#34;&gt;
+    &lt;a href=&#34;#strategy-development&#34; class=&#34;header-anchor&#34;&gt;#&lt;/a&gt;
+    Strategy Development
+&lt;/h2&gt;&lt;p&gt;Strategy development is a core part of Freqtrade&amp;rsquo;s use, which determines the intelligence and success rate of trading behavior. This section takes a deep dive into what constitutes a strategy, how to develop it, and how to test and optimize your strategy.&lt;/p&gt;
+&lt;h3 id=&#34;policy-structure&#34;&gt;
+    &lt;a href=&#34;#policy-structure&#34; class=&#34;header-anchor&#34;&gt;#&lt;/a&gt;
+    Policy Structure
+&lt;/h3&gt;&lt;p&gt;In Freqtrade, a strategy is a Python class that contains specific functions and settings. A typical policy file contains the following sections:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Metadata Definition: Includes the policy&amp;rsquo;s name, author, version number, and applicable time frame. This information helps you identify and manage policies.&lt;/li&gt;
+&lt;li&gt;Indicator Settings: One of the most important parts of the strategy that defines the technical indicators used to generate trading signals.&lt;/li&gt;
+&lt;li&gt;Buy and Sell Signal Logic: Conditional logic that defines when to buy and sell based on the results of the indicator.&lt;/li&gt;
+&lt;li&gt;Stop-Loss and Take Profit: Set the risk management measures of the strategy, such as stop-loss and take-profit points.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;development-process&#34;&gt;
+    &lt;a href=&#34;#development-process&#34; class=&#34;header-anchor&#34;&gt;#&lt;/a&gt;
+    Development Process
+&lt;/h3&gt;&lt;p&gt;The process of strategy development can be divided into the following steps:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;Understand the market and choose indicators: First of all, you need to have a deep understanding of the market, and choose the right technical indicators based on this understanding. For example, if you believe that the market has a trending character, you might choose trend indicators such as moving averages (MAs), relative strength index (RSI), etc.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Write Strategy Logic: Write buy and sell conditions based on the selected indicator. This usually involves programming skills, the need to implement the calculation of indicators and the logical judgment of signals in the strategy document.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Configure Strategy File: Configure the required parameters in the strategy class, such as the time period of the indicator, the threshold of buying and selling conditions, etc.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;test-and-optimize-strategies&#34;&gt;
+    &lt;a href=&#34;#test-and-optimize-strategies&#34; class=&#34;header-anchor&#34;&gt;#&lt;/a&gt;
+    Test and Optimize Strategies
+&lt;/h3&gt;&lt;p&gt;Once a strategy is developed, it needs to be backtested to verify its effectiveness and profitability. Freqtrade offers a powerful backtesting tool that allows you to test strategies on historical data.&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;Backtesting: Run a strategy using Freqtrade&amp;rsquo;s backtesting feature to see how it performs on historical data. This can be done with a command-line tool, for example:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;freqtrade backtesting --strategy YourStrategy
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;This will show the performance of the strategy, including important metrics such as profit and loss, maximum drawdown, etc.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Result Analysis: Drill down into the backtesting results to identify your strategy&amp;rsquo;s strengths and weaknesses. Evaluate strategy performance based on metrics such as return curve, win rate, profit and loss ratio, and more.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Optimization: Optimize the strategy parameters based on the backtest results. Freqtrade supports the strategy optimization function, which can automatically adjust the parameters to find the best configuration.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;policy-example&#34;&gt;
+    &lt;a href=&#34;#policy-example&#34; class=&#34;header-anchor&#34;&gt;#&lt;/a&gt;
+    Policy Example
+&lt;/h3&gt;&lt;p&gt;Let&amp;rsquo;s say we&amp;rsquo;re developing a strategy based on a simple moving average (SMA) crossover, which we might do like this:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Define indicator: Calculate SMAs with two different periods (e.g. SMA30 and SMA100).&lt;/li&gt;
+&lt;li&gt;Buy logic: A buy signal is given when the short-term SMA (SMA30) crosses the long-term SMA (SMA100) from below.&lt;/li&gt;
+&lt;li&gt;Sell logic: A sell signal is given when the short-term SMA (SMA30) crosses the long-term SMA (SMA100) from above.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;With such logic, we can construct a simple trend-following strategy. Then, through the backtesting and optimization process, we can refine this strategy, improve its performance, and ultimately form an efficient automated trading strategy.&lt;/p&gt;
+&lt;h2 id=&#34;real-trading&#34;&gt;
+    &lt;a href=&#34;#real-trading&#34; class=&#34;header-anchor&#34;&gt;#&lt;/a&gt;
+    Real Trading
+&lt;/h2&gt;&lt;p&gt;Real trading is the process of executing a strategy in a real market environment, which is the ultimate goal of algorithmic trading. Implementing real trading in Freqtrade requires careful and precise preparation. This section will explore in detail how to safely and effectively deploy your strategy into live trading.&lt;/p&gt;
+&lt;h3 id=&#34;preparation-phase&#34;&gt;
+    &lt;a href=&#34;#preparation-phase&#34; class=&#34;header-anchor&#34;&gt;#&lt;/a&gt;
+    Preparation Phase
+&lt;/h3&gt;&lt;p&gt;Before starting a real trade, you need to make sure of the following:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Strategy Validation&lt;/strong&gt;: Make sure that your strategy is fully backtested and optimized, and that it performs well in Dry-run mode.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Risk Management: Define your risk tolerance and set stop-loss and take-profit points accordingly. These settings should be clearly defined in the policy to be automated.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Money Management: Decide how much money to use for trading. You shouldn&amp;rsquo;t invest more money than you can afford. In Freqtrade, the amount of funds used can be set through the profile.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;start-live-trading&#34;&gt;
+    &lt;a href=&#34;#start-live-trading&#34; class=&#34;header-anchor&#34;&gt;#&lt;/a&gt;
+    Start live trading
+&lt;/h3&gt;&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Configure Real Trading Environment&lt;/strong&gt;: Switch to real mode in the configuration file and make sure that all settings (such as API key, fund allocation, trading pairs, etc.) are correct.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Monitoring and Maintenance: Once live trading is initiated, it is important to continuously monitor trading activity and system performance. While Freqtrade can automate the execution of trades, it is important to monitor trading conditions and market changes.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Logging&lt;/strong&gt;: Check Freqtrade&amp;rsquo;s log files regularly, this can help you understand trading behavior and possible issues.&lt;/li&gt;
+&lt;li&gt;Performance Evaluation: Regularly evaluate the performance of your trading strategy to ensure that it still meets your intended trading objectives and risk management requirements.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Respond to market changes: Market conditions are constantly changing, and your strategy may need to adjust to accommodate these changes. Keeping your strategy updated and sensitive to market trends can improve your chances of long-term success.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;risk-control&#34;&gt;
+    &lt;a href=&#34;#risk-control&#34; class=&#34;header-anchor&#34;&gt;#&lt;/a&gt;
+    Risk Control
+&lt;/h3&gt;&lt;p&gt;In real trading, risk control is crucial. This includes:
+:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Set a reasonable stop loss: to prevent large losses.&lt;/li&gt;
+&lt;li&gt;Diversification: Don&amp;rsquo;t put all your money into a single trade or market.&lt;/li&gt;
+&lt;li&gt;Avoid overtrading: Trade according to the logic of the strategy and avoid unnecessary trading due to emotional decisions.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;optimize--iterate&#34;&gt;
+    &lt;a href=&#34;#optimize--iterate&#34; class=&#34;header-anchor&#34;&gt;#&lt;/a&gt;
+    Optimize &amp;amp; Iterate
+&lt;/h3&gt;&lt;p&gt;Even in real trading, strategies should be continuously sought to optimize and improve. The market is dynamic, and the strategy should also be dynamically adjusted:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Collect Trading Data: Analyze live trading data to understand how your strategy performs in the real market.&lt;/li&gt;
+&lt;li&gt;Periodic Backtesting: Regularly backtesting strategies with the latest market data to ensure their effectiveness.&lt;/li&gt;
+&lt;li&gt;Timely Adjustments: Make necessary adjustments based on market changes and strategy performance.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;With the above steps, you can start trading algorithms with Freqtrade. While this tutorial is only a brief introduction to Freqtrade, it gives you enough information to start exploring this powerful trading tool. Further in-depth study and practice will help you better understand and utilize Freqtrade&amp;rsquo;s features to optimize your trading strategy.&lt;/p&gt;
+</description>
+        </item>
+        
+    </channel>
 </rss>

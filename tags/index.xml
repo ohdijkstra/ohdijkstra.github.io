@@ -1,54 +1,59 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>Tags on UWin AI</title>
-    <link>https://ohdijkstra.github.io/tags/</link>
-    <description>Recent content in Tags on UWin AI</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <language>zh-cn</language>
-    <lastBuildDate>Thu, 11 Apr 2024 12:02:52 +0800</lastBuildDate>
-    <atom:link href="https://ohdijkstra.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>IOS</title>
-      <link>https://ohdijkstra.github.io/tags/ios/</link>
-      <pubDate>Thu, 11 Apr 2024 12:02:52 +0800</pubDate>
-      <guid>https://ohdijkstra.github.io/tags/ios/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>BlockChain</title>
-      <link>https://ohdijkstra.github.io/tags/blockchain/</link>
-      <pubDate>Fri, 22 Mar 2024 13:27:39 +0800</pubDate>
-      <guid>https://ohdijkstra.github.io/tags/blockchain/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Trade</title>
-      <link>https://ohdijkstra.github.io/tags/trade/</link>
-      <pubDate>Fri, 22 Mar 2024 13:27:39 +0800</pubDate>
-      <guid>https://ohdijkstra.github.io/tags/trade/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Hugo</title>
-      <link>https://ohdijkstra.github.io/tags/hugo/</link>
-      <pubDate>Tue, 05 Mar 2024 11:01:24 +0800</pubDate>
-      <guid>https://ohdijkstra.github.io/tags/hugo/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>AI</title>
-      <link>https://ohdijkstra.github.io/tags/ai/</link>
-      <pubDate>Mon, 04 Mar 2024 07:16:51 +0100</pubDate>
-      <guid>https://ohdijkstra.github.io/tags/ai/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>ChatGPT</title>
-      <link>https://ohdijkstra.github.io/tags/chatgpt/</link>
-      <pubDate>Mon, 04 Mar 2024 07:16:51 +0100</pubDate>
-      <guid>https://ohdijkstra.github.io/tags/chatgpt/</guid>
-      <description></description>
-    </item>
-  </channel>
+    <channel>
+        <title>Tags on UWin AI</title>
+        <link>https://ohdijkstra.github.io/tags/</link>
+        <description>Recent content in Tags on UWin AI</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>zh-cn</language>
+        <lastBuildDate>Thu, 11 Apr 2024 12:02:52 +0800</lastBuildDate><atom:link href="https://ohdijkstra.github.io/tags/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>IOS</title>
+        <link>https://ohdijkstra.github.io/tags/ios/</link>
+        <pubDate>Thu, 11 Apr 2024 12:02:52 +0800</pubDate>
+        
+        <guid>https://ohdijkstra.github.io/tags/ios/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>BlockChain</title>
+        <link>https://ohdijkstra.github.io/tags/blockchain/</link>
+        <pubDate>Fri, 22 Mar 2024 13:27:39 +0800</pubDate>
+        
+        <guid>https://ohdijkstra.github.io/tags/blockchain/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>Trade</title>
+        <link>https://ohdijkstra.github.io/tags/trade/</link>
+        <pubDate>Fri, 22 Mar 2024 13:27:39 +0800</pubDate>
+        
+        <guid>https://ohdijkstra.github.io/tags/trade/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>Hugo</title>
+        <link>https://ohdijkstra.github.io/tags/hugo/</link>
+        <pubDate>Tue, 05 Mar 2024 11:01:24 +0800</pubDate>
+        
+        <guid>https://ohdijkstra.github.io/tags/hugo/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>AI</title>
+        <link>https://ohdijkstra.github.io/tags/ai/</link>
+        <pubDate>Mon, 04 Mar 2024 07:16:51 +0100</pubDate>
+        
+        <guid>https://ohdijkstra.github.io/tags/ai/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>ChatGPT</title>
+        <link>https://ohdijkstra.github.io/tags/chatgpt/</link>
+        <pubDate>Mon, 04 Mar 2024 07:16:51 +0100</pubDate>
+        
+        <guid>https://ohdijkstra.github.io/tags/chatgpt/</guid>
+        <description></description>
+        </item>
+        
+    </channel>
 </rss>

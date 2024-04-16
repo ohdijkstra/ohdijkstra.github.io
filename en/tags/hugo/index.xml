@@ -1,19 +1,83 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>Hugo on UWin AI</title>
-    <link>https://ohdijkstra.github.io/en/tags/hugo/</link>
-    <description>Recent content in Hugo on UWin AI</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <language>en</language>
-    <lastBuildDate>Tue, 05 Mar 2024 11:01:24 +0800</lastBuildDate>
-    <atom:link href="https://ohdijkstra.github.io/en/tags/hugo/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>How to quickly use Hugo to create your own website</title>
-      <link>https://ohdijkstra.github.io/en/post/about-hugo/</link>
-      <pubDate>Tue, 05 Mar 2024 11:01:24 +0800</pubDate>
-      <guid>https://ohdijkstra.github.io/en/post/about-hugo/</guid>
-      <description>In the Internet age, having a personal website has become standard for almost every technology enthusiast. It not only showcases your technology stack, but also shares your thoughts and insights. This article will guide you how to use Hugo - a fast, flexible static website generator - to build your personal website. We will start with the basic concepts, gradually deepen into the core features of Hugo, and finally lead you to complete the construction of a personalized website.</description>
-    </item>
-  </channel>
+    <channel>
+        <title>Hugo on UWin AI</title>
+        <link>https://ohdijkstra.github.io/en/tags/hugo/</link>
+        <description>Recent content in Hugo on UWin AI</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>en</language>
+        <lastBuildDate>Tue, 05 Mar 2024 11:01:24 +0800</lastBuildDate><atom:link href="https://ohdijkstra.github.io/en/tags/hugo/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>How to quickly use Hugo to create your own website</title>
+        <link>https://ohdijkstra.github.io/en/post/about-hugo/</link>
+        <pubDate>Tue, 05 Mar 2024 11:01:24 +0800</pubDate>
+        
+        <guid>https://ohdijkstra.github.io/en/post/about-hugo/</guid>
+        <description>&lt;p&gt;In the Internet age, having a personal website has become standard for almost every technology enthusiast. It not only showcases your technology stack, but also shares your thoughts and insights. This article will guide you how to use Hugo - a fast, flexible static website generator - to build your personal website. We will start with the basic concepts, gradually deepen into the core features of Hugo, and finally lead you to complete the construction of a personalized website.&lt;/p&gt;
+&lt;h2 id=&#34;introduction&#34;&gt;
+    &lt;a href=&#34;#introduction&#34; class=&#34;header-anchor&#34;&gt;#&lt;/a&gt;
+    Introduction
+&lt;/h2&gt;&lt;p&gt;Hugo is a static website generator written in Go language, which is famous for its fast build speed and flexible configuration. Compared with dynamic websites, static websites do not rely on databases, and pages are pre-generated on the server, which can provide faster loading speeds and higher security. Hugo not only helps you quickly generate a website, but also makes website design simple and elegant through rich themes and templates.&lt;/p&gt;
+&lt;h2 id=&#34;install-hugo&#34;&gt;
+    &lt;a href=&#34;#install-hugo&#34; class=&#34;header-anchor&#34;&gt;#&lt;/a&gt;
+    Install Hugo
+&lt;/h2&gt;&lt;p&gt;Installing Hugo is a simple and straightforward process. You can download the installation package for the corresponding platform through the package manager or directly from Hugo&amp;rsquo;s official website.&lt;/p&gt;
+&lt;h3 id=&#34;windows&#34;&gt;
+    &lt;a href=&#34;#windows&#34; class=&#34;header-anchor&#34;&gt;#&lt;/a&gt;
+    Windows
+&lt;/h3&gt;&lt;p&gt;If you are using Windows, you can install it through Chocolatey:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;choco install hugo -confirm
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;macos&#34;&gt;
+    &lt;a href=&#34;#macos&#34; class=&#34;header-anchor&#34;&gt;#&lt;/a&gt;
+    macOS
+&lt;/h3&gt;&lt;p&gt;For macOS users, you can use Homebrew to install:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;brew install hugo
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;linux&#34;&gt;
+    &lt;a href=&#34;#linux&#34; class=&#34;header-anchor&#34;&gt;#&lt;/a&gt;
+    Linux
+&lt;/h3&gt;&lt;p&gt;Linux users can use package managers such as apt or yum. Here, apt is used as an example:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sudo apt-get install hugo
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;After the installation is complete, you can verify whether the installation was successful by running &lt;code&gt;hugo version&lt;/code&gt;.&lt;/p&gt;
+&lt;h2 id=&#34;create-your-first-website&#34;&gt;
+    &lt;a href=&#34;#create-your-first-website&#34; class=&#34;header-anchor&#34;&gt;#&lt;/a&gt;
+    Create your first website
+&lt;/h2&gt;&lt;p&gt;After installing Hugo, you can start creating your first website immediately. Open a terminal or command prompt and run the following command:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;hugo new site my-first-website
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;This line of command will create a new directory called &lt;code&gt;my-first-website&lt;/code&gt; and initialize an empty Hugo website structure.&lt;/p&gt;
+&lt;h2 id=&#34;select-a-theme&#34;&gt;
+    &lt;a href=&#34;#select-a-theme&#34; class=&#34;header-anchor&#34;&gt;#&lt;/a&gt;
+    Select a theme
+&lt;/h2&gt;&lt;p&gt;The Hugo community provides many beautiful themes, and you can find them on the &lt;a class=&#34;link&#34; href=&#34;https://themes.gohugo.io/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Hugo Themes&lt;/a&gt; website. Choose a theme you like and clone it into the &lt;code&gt;themes&lt;/code&gt; directory of your website. Take the Ananke theme as an example:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;cd my-first-website
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;git submodule add https://github.com/theNewDynamic/gohugo-theme-ananke.git themes/ananke
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Next, edit your website’s configuration file &lt;code&gt;config.toml&lt;/code&gt; and set the theme to Ananke:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-toml&#34; data-lang=&#34;toml&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;theme&lt;/span&gt; = &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;ananke&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;add-content&#34;&gt;
+    &lt;a href=&#34;#add-content&#34; class=&#34;header-anchor&#34;&gt;#&lt;/a&gt;
+    Add content
+&lt;/h2&gt;&lt;p&gt;Now that your website has a theme, it’s time to add some content. Hugo manages content through Markdown files, so you can easily write and format your articles.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;hugo new posts/my-first-post.md
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;This will create a new Markdown file in the &lt;code&gt;content/posts&lt;/code&gt; directory. Open this file with your favorite text editor and you&amp;rsquo;ll see that Hugo has filled in some basic prepend metadata for you. Below this, you can start writing your article content.&lt;/p&gt;
+&lt;h2 id=&#34;local-preview-website&#34;&gt;
+    &lt;a href=&#34;#local-preview-website&#34; class=&#34;header-anchor&#34;&gt;#&lt;/a&gt;
+    Local preview website
+&lt;/h2&gt;&lt;p&gt;Before publishing your site, you may want to preview it locally. Hugo provides a built-in server that allows you to see changes in real time:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;hugo server -D
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;The &lt;code&gt;-D&lt;/code&gt; parameter will cause Hugo to include the contents of the draft state. Open your browser and visit &lt;code&gt;http://localhost:1313&lt;/code&gt;, and you will be able to see your website.&lt;/p&gt;
+&lt;h2 id=&#34;deploy-your-website&#34;&gt;
+    &lt;a href=&#34;#deploy-your-website&#34; class=&#34;header-anchor&#34;&gt;#&lt;/a&gt;
+    Deploy your website
+&lt;/h2&gt;&lt;p&gt;When you are satisfied with your website and ready to publish it to the Internet, you need to generate the static files and upload them to a web server or use a static website hosting service such as GitHub Pages or Netlify.&lt;/p&gt;
+&lt;p&gt;Run the following command to generate static content:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;hugo -D
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;This will generate your website in the &lt;code&gt;public&lt;/code&gt; directory. Just upload this directory to your server or use any service that supports static website hosting.&lt;/p&gt;
+&lt;h2 id=&#34;conclusion&#34;&gt;
+    &lt;a href=&#34;#conclusion&#34; class=&#34;header-anchor&#34;&gt;#&lt;/a&gt;
+    Conclusion
+&lt;/h2&gt;&lt;p&gt;Congratulations, you now have a personal website built with Hugo! Through the above steps, we not only introduced the basic concepts and installation process of Hugo, but also guided you step by step to create, design, add content, and finally deploy your website. Hugo&amp;rsquo;s flexibility and speed provide individuals and businesses with a powerful tool to quickly build and manage websites. As you further explore Hugo, you&amp;rsquo;ll be able to take advantage of its advanced features, such as custom themes, shortcodes, multi-language support, and more, to enrich your website&amp;rsquo;s functionality and improve your user experience.&lt;/p&gt;
+&lt;p&gt;Keep exploring and make your website more personalized and feature-rich!&lt;/p&gt;
+</description>
+        </item>
+        
+    </channel>
 </rss>

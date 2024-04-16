@@ -1,107 +1,18 @@
 <!DOCTYPE html>
-<html lang="zh" dir="ltr">
+<html lang="zh-cn" dir="ltr">
     <head><meta charset='utf-8'>
-<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='引言 Freqtrade是一款开源的加密货币算法交易软件，它允许交易者利用定制策略自动执行交易。本教程旨在通过浅显的语言和逐步的解析，向您介绍Freqtrade的基础概念和操作流程，使您能够理解并开始使用这一工具进行算法交易。
-概要 Freqtrade简介：了解什么是Freqtrade及其主要特点。 环境搭建：如何安装和配置Freqtrade。 策略开发：策略的基本组成和开发流程。 回测和优化：如何测试和优化交易策略。 实盘交易：将策略应用到实际交易中。 Freqtrade简介 Freqtrade是一种基于Python的算法交易软件，主要用于加密货币市场。它的主要特点包括易于使用的命令行界面、支持多种交易所、灵活的策略配置和有效的数据管理。用户可以编写自己的交易策略，Freqtrade将根据这些策略自动执行交易。
-环境搭建 环境搭建是Freqtrade使用的前提，它确保了软件运行的基础设施。本节将详细介绍Freqtrade的安装过程、配置文件的设置，以及如何准备交易环境。
-安装Freqtrade 安装Freqtrade涉及几个关键步骤，确保软件能够在您的系统中顺利运行。
-系统要求：确保您的操作系统能够运行Freqtrade。虽然Freqtrade支持多种操作系统（如Windows、macOS和Linux），但在Linux上运行通常会提供最佳性能和稳定性。
-安装Python：Freqtrade是用Python编写的，因此需要Python环境。建议使用Python 3.7及以上版本，以确保兼容性和性能。可以从Python官网下载并安装。
-克隆Freqtrade仓库：通过Git克隆Freqtrade的GitHub仓库到本地。如果您没有安装Git，可以从Git官网下载。使用以下命令克隆仓库：
-git clone https://github.com/freqtrade/freqtrade.git 这将在您的机器上创建一个含有Freqtrade源代码的目录。
-安装依赖：Freqtrade有一系列的Python库依赖。在Freqtrade目录中，运行以下命令来安装这些依赖：
-cd freqtrade pip install -r requirements.txt 这将确保所有必要的库都被安装在您的Python环境中。
-配置Freqtrade 配置是Freqtrade正常运行的关键，涉及API连接、交易参数和策略选择等方面。
-配置文件：Freqtrade使用JSON格式的配置文件。您可以从config.json.example样本文件开始，复制并重命名为config.json，然后根据您的需求进行编辑。
-设置API密钥：为了让Freqtrade能够在交易所执行交易，您需要提供API密钥。通常在您的交易所账户页面生成，并在配置文件中相应位置填写。
-选择交易对和金额：在配置文件中，您可以设定想要交易的货币对和每次交易使用的金额或比例。
-其他配置：包括但不限于风险管理参数（如止损、止盈设置）、交易时间间隔、日志记录等。这些配置项将根据您的交易策略和风险偏好来设定。
-准备交易环境 完成Freqtrade的安装和配置后，您需要准备交易环境，确保一切设置正确无误。
-测试安装：运行Freqtrade的测试命令来验证安装是否成功，例如：
-freqtrade test 如果一切正常，该命令应无错误地执行。
-下载历史数据：为了进行策略的回测或优化，您需要下载历史交易数据。Freqtrade提供了命令来帮助您下载数据：
-freqtrade download-data --timeframe 1h 这会下载一小时时间框架的历史数据。
-运行Dry-run：在实际进行交易之前，建议先以Dry-run模式运行Freqtrade，这将模拟交易过程而不实际执行。这是检查策略和配置是否正确的好方法。
-策略开发 策略开发是Freqtrade使用中的核心部分，它决定了交易行为的智能化程度和成功率。本节将深入探讨策略的组成、开发流程，以及如何测试和优化您的策略。
-策略结构 在Freqtrade中，策略是一个包含特定函数和设置的Python类。一个典型的策略文件包含以下部分：
-元数据定义：包括策略的名称、作者、版本号和适用的时间框架。这些信息帮助标识和管理策略。 指标设置：策略中最重要的部分之一，定义了用于生成交易信号的技术指标。 买卖信号逻辑：基于指标结果，定义何时买入和卖出的条件逻辑。 止损和止盈：设定策略的风险管理措施，如止损点和止盈点。 开发流程 策略开发的过程可以分为以下几个步骤：
-理解市场和选择指标：首先需要对市场有深入的理解，基于这种理解选择合适的技术指标。例如，如果您相信市场具有趋势特性，可能会选择移动平均线（MA）、相对强弱指数（RSI）等趋势指标。
-编写策略逻辑：根据选定的指标编写买入和卖出条件。这通常涉及编程技能，需要在策略文件中实现指标的计算和信号的逻辑判断。
-配置策略文件：在策略类中配置所需的参数，如指标的时间周期、买卖条件的阈值等。
-测试和优化策略 开发策略后，需要通过回测来验证其有效性和盈利能力。Freqtrade提供了强大的回测工具，允许您在历史数据上测试策略。
-回测：使用Freqtrade的回测功能运行策略，查看其在历史数据上的表现。这可以通过命令行工具完成，例如：
-freqtrade backtesting --strategy YourStrategy 这将显示策略的表现，包括盈亏、最大回撤等重要指标。'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="# 引言 Freqtrade是一款开源的加密货币算法交易软件，它允许交易者利用定制策略自动执行交易。本教程旨在通过浅显的语言和逐步的解析，向您介">
 <title>Freqtrade算法交易简明教程</title>
 
 <link rel='canonical' href='https://ohdijkstra.github.io/post/freqtrade-tutorial/'>
 
-<link rel="stylesheet" href="/scss/style.min.abbd69b2908fdfcd5179898beaafd374514a86538d81639ddd2c58c06ae54e40.css"><meta property='og:title' content='Freqtrade算法交易简明教程'>
-<meta property='og:description' content='引言 Freqtrade是一款开源的加密货币算法交易软件，它允许交易者利用定制策略自动执行交易。本教程旨在通过浅显的语言和逐步的解析，向您介绍Freqtrade的基础概念和操作流程，使您能够理解并开始使用这一工具进行算法交易。
-概要 Freqtrade简介：了解什么是Freqtrade及其主要特点。 环境搭建：如何安装和配置Freqtrade。 策略开发：策略的基本组成和开发流程。 回测和优化：如何测试和优化交易策略。 实盘交易：将策略应用到实际交易中。 Freqtrade简介 Freqtrade是一种基于Python的算法交易软件，主要用于加密货币市场。它的主要特点包括易于使用的命令行界面、支持多种交易所、灵活的策略配置和有效的数据管理。用户可以编写自己的交易策略，Freqtrade将根据这些策略自动执行交易。
-环境搭建 环境搭建是Freqtrade使用的前提，它确保了软件运行的基础设施。本节将详细介绍Freqtrade的安装过程、配置文件的设置，以及如何准备交易环境。
-安装Freqtrade 安装Freqtrade涉及几个关键步骤，确保软件能够在您的系统中顺利运行。
-系统要求：确保您的操作系统能够运行Freqtrade。虽然Freqtrade支持多种操作系统（如Windows、macOS和Linux），但在Linux上运行通常会提供最佳性能和稳定性。
-安装Python：Freqtrade是用Python编写的，因此需要Python环境。建议使用Python 3.7及以上版本，以确保兼容性和性能。可以从Python官网下载并安装。
-克隆Freqtrade仓库：通过Git克隆Freqtrade的GitHub仓库到本地。如果您没有安装Git，可以从Git官网下载。使用以下命令克隆仓库：
-git clone https://github.com/freqtrade/freqtrade.git 这将在您的机器上创建一个含有Freqtrade源代码的目录。
-安装依赖：Freqtrade有一系列的Python库依赖。在Freqtrade目录中，运行以下命令来安装这些依赖：
-cd freqtrade pip install -r requirements.txt 这将确保所有必要的库都被安装在您的Python环境中。
-配置Freqtrade 配置是Freqtrade正常运行的关键，涉及API连接、交易参数和策略选择等方面。
-配置文件：Freqtrade使用JSON格式的配置文件。您可以从config.json.example样本文件开始，复制并重命名为config.json，然后根据您的需求进行编辑。
-设置API密钥：为了让Freqtrade能够在交易所执行交易，您需要提供API密钥。通常在您的交易所账户页面生成，并在配置文件中相应位置填写。
-选择交易对和金额：在配置文件中，您可以设定想要交易的货币对和每次交易使用的金额或比例。
-其他配置：包括但不限于风险管理参数（如止损、止盈设置）、交易时间间隔、日志记录等。这些配置项将根据您的交易策略和风险偏好来设定。
-准备交易环境 完成Freqtrade的安装和配置后，您需要准备交易环境，确保一切设置正确无误。
-测试安装：运行Freqtrade的测试命令来验证安装是否成功，例如：
-freqtrade test 如果一切正常，该命令应无错误地执行。
-下载历史数据：为了进行策略的回测或优化，您需要下载历史交易数据。Freqtrade提供了命令来帮助您下载数据：
-freqtrade download-data --timeframe 1h 这会下载一小时时间框架的历史数据。
-运行Dry-run：在实际进行交易之前，建议先以Dry-run模式运行Freqtrade，这将模拟交易过程而不实际执行。这是检查策略和配置是否正确的好方法。
-策略开发 策略开发是Freqtrade使用中的核心部分，它决定了交易行为的智能化程度和成功率。本节将深入探讨策略的组成、开发流程，以及如何测试和优化您的策略。
-策略结构 在Freqtrade中，策略是一个包含特定函数和设置的Python类。一个典型的策略文件包含以下部分：
-元数据定义：包括策略的名称、作者、版本号和适用的时间框架。这些信息帮助标识和管理策略。 指标设置：策略中最重要的部分之一，定义了用于生成交易信号的技术指标。 买卖信号逻辑：基于指标结果，定义何时买入和卖出的条件逻辑。 止损和止盈：设定策略的风险管理措施，如止损点和止盈点。 开发流程 策略开发的过程可以分为以下几个步骤：
-理解市场和选择指标：首先需要对市场有深入的理解，基于这种理解选择合适的技术指标。例如，如果您相信市场具有趋势特性，可能会选择移动平均线（MA）、相对强弱指数（RSI）等趋势指标。
-编写策略逻辑：根据选定的指标编写买入和卖出条件。这通常涉及编程技能，需要在策略文件中实现指标的计算和信号的逻辑判断。
-配置策略文件：在策略类中配置所需的参数，如指标的时间周期、买卖条件的阈值等。
-测试和优化策略 开发策略后，需要通过回测来验证其有效性和盈利能力。Freqtrade提供了强大的回测工具，允许您在历史数据上测试策略。
-回测：使用Freqtrade的回测功能运行策略，查看其在历史数据上的表现。这可以通过命令行工具完成，例如：
-freqtrade backtesting --strategy YourStrategy 这将显示策略的表现，包括盈亏、最大回撤等重要指标。'>
+<link rel="stylesheet" href="/scss/style.min.760e3dabc1e140d2e6abd27a8ca0aabb60e568829b29f67d2df12024136eff37.css"><meta property='og:title' content="Freqtrade算法交易简明教程">
+<meta property='og:description' content="# 引言 Freqtrade是一款开源的加密货币算法交易软件，它允许交易者利用定制策略自动执行交易。本教程旨在通过浅显的语言和逐步的解析，向您介">
 <meta property='og:url' content='https://ohdijkstra.github.io/post/freqtrade-tutorial/'>
 <meta property='og:site_name' content='UWin AI'>
 <meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='BlockChain' /><meta property='article:tag' content='Trade' /><meta property='article:published_time' content='2024-03-22T13:27:39&#43;08:00'/><meta property='article:modified_time' content='2024-03-22T13:27:39&#43;08:00'/>
 <meta name="twitter:title" content="Freqtrade算法交易简明教程">
-<meta name="twitter:description" content="引言 Freqtrade是一款开源的加密货币算法交易软件，它允许交易者利用定制策略自动执行交易。本教程旨在通过浅显的语言和逐步的解析，向您介绍Freqtrade的基础概念和操作流程，使您能够理解并开始使用这一工具进行算法交易。
-概要 Freqtrade简介：了解什么是Freqtrade及其主要特点。 环境搭建：如何安装和配置Freqtrade。 策略开发：策略的基本组成和开发流程。 回测和优化：如何测试和优化交易策略。 实盘交易：将策略应用到实际交易中。 Freqtrade简介 Freqtrade是一种基于Python的算法交易软件，主要用于加密货币市场。它的主要特点包括易于使用的命令行界面、支持多种交易所、灵活的策略配置和有效的数据管理。用户可以编写自己的交易策略，Freqtrade将根据这些策略自动执行交易。
-环境搭建 环境搭建是Freqtrade使用的前提，它确保了软件运行的基础设施。本节将详细介绍Freqtrade的安装过程、配置文件的设置，以及如何准备交易环境。
-安装Freqtrade 安装Freqtrade涉及几个关键步骤，确保软件能够在您的系统中顺利运行。
-系统要求：确保您的操作系统能够运行Freqtrade。虽然Freqtrade支持多种操作系统（如Windows、macOS和Linux），但在Linux上运行通常会提供最佳性能和稳定性。
-安装Python：Freqtrade是用Python编写的，因此需要Python环境。建议使用Python 3.7及以上版本，以确保兼容性和性能。可以从Python官网下载并安装。
-克隆Freqtrade仓库：通过Git克隆Freqtrade的GitHub仓库到本地。如果您没有安装Git，可以从Git官网下载。使用以下命令克隆仓库：
-git clone https://github.com/freqtrade/freqtrade.git 这将在您的机器上创建一个含有Freqtrade源代码的目录。
-安装依赖：Freqtrade有一系列的Python库依赖。在Freqtrade目录中，运行以下命令来安装这些依赖：
-cd freqtrade pip install -r requirements.txt 这将确保所有必要的库都被安装在您的Python环境中。
-配置Freqtrade 配置是Freqtrade正常运行的关键，涉及API连接、交易参数和策略选择等方面。
-配置文件：Freqtrade使用JSON格式的配置文件。您可以从config.json.example样本文件开始，复制并重命名为config.json，然后根据您的需求进行编辑。
-设置API密钥：为了让Freqtrade能够在交易所执行交易，您需要提供API密钥。通常在您的交易所账户页面生成，并在配置文件中相应位置填写。
-选择交易对和金额：在配置文件中，您可以设定想要交易的货币对和每次交易使用的金额或比例。
-其他配置：包括但不限于风险管理参数（如止损、止盈设置）、交易时间间隔、日志记录等。这些配置项将根据您的交易策略和风险偏好来设定。
-准备交易环境 完成Freqtrade的安装和配置后，您需要准备交易环境，确保一切设置正确无误。
-测试安装：运行Freqtrade的测试命令来验证安装是否成功，例如：
-freqtrade test 如果一切正常，该命令应无错误地执行。
-下载历史数据：为了进行策略的回测或优化，您需要下载历史交易数据。Freqtrade提供了命令来帮助您下载数据：
-freqtrade download-data --timeframe 1h 这会下载一小时时间框架的历史数据。
-运行Dry-run：在实际进行交易之前，建议先以Dry-run模式运行Freqtrade，这将模拟交易过程而不实际执行。这是检查策略和配置是否正确的好方法。
-策略开发 策略开发是Freqtrade使用中的核心部分，它决定了交易行为的智能化程度和成功率。本节将深入探讨策略的组成、开发流程，以及如何测试和优化您的策略。
-策略结构 在Freqtrade中，策略是一个包含特定函数和设置的Python类。一个典型的策略文件包含以下部分：
-元数据定义：包括策略的名称、作者、版本号和适用的时间框架。这些信息帮助标识和管理策略。 指标设置：策略中最重要的部分之一，定义了用于生成交易信号的技术指标。 买卖信号逻辑：基于指标结果，定义何时买入和卖出的条件逻辑。 止损和止盈：设定策略的风险管理措施，如止损点和止盈点。 开发流程 策略开发的过程可以分为以下几个步骤：
-理解市场和选择指标：首先需要对市场有深入的理解，基于这种理解选择合适的技术指标。例如，如果您相信市场具有趋势特性，可能会选择移动平均线（MA）、相对强弱指数（RSI）等趋势指标。
-编写策略逻辑：根据选定的指标编写买入和卖出条件。这通常涉及编程技能，需要在策略文件中实现指标的计算和信号的逻辑判断。
-配置策略文件：在策略类中配置所需的参数，如指标的时间周期、买卖条件的阈值等。
-测试和优化策略 开发策略后，需要通过回测来验证其有效性和盈利能力。Freqtrade提供了强大的回测工具，允许您在历史数据上测试策略。
-回测：使用Freqtrade的回测功能运行策略，查看其在历史数据上的表现。这可以通过命令行工具完成，例如：
-freqtrade backtesting --strategy YourStrategy 这将显示策略的表现，包括盈亏、最大回撤等重要指标。">
-    <link rel="shortcut icon" href="/favicon.png" />
-
+<meta name="twitter:description" content="# 引言 Freqtrade是一款开源的加密货币算法交易软件，它允许交易者利用定制策略自动执行交易。本教程旨在通过浅显的语言和逐步的解析，向您介">
     </head>
     <body class="
     article-page
@@ -129,7 +40,7 @@ freqtrade backtesting --strategy YourStrategy 这将显示策略的表现，包�
     })();
 </script>
 <div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
-    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="Toggle Menu">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="切换菜单">
         <span class="hamburger-box">
             <span class="hamburger-inner"></span>
         </span>
@@ -145,13 +56,13 @@ freqtrade backtesting --strategy YourStrategy 这将显示策略的表现，包�
                     
                     
                         
-                        <img src="/img/avatar_hu3cbb0e7b2d3cd7054d64a53d8df98dcb_61126_300x0_resize_box_3.png" width="300"
+                        <img src="/img/avatar_huc9acb0a5042744b0e07a50f5827695ef_110614_300x0_resize_box_3.png" width="300"
                             height="300" class="site-logo" loading="lazy" alt="Avatar">
                     
                 
                 </a>
                 
-                    <span class="emoji">🍥</span>
+                    <span class="emoji">😄</span>
                 
             </figure>
             
@@ -159,13 +70,13 @@ freqtrade backtesting --strategy YourStrategy 这将显示策略的表现，包�
         
         <div class="site-meta">
             <h1 class="site-name"><a href="/">UWin AI</a></h1>
-            <h2 class="site-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</h2>
+            <h2 class="site-description">行至水穷处，坐看云起时。</h2>
         </div>
-    </header><ol class="social-menu">
+    </header><ol class="menu-social">
             
                 <li>
                     <a 
-                        href='https://github.com/CaiJimmy/hugo-theme-stack'
+                        href='https://github.com/bw4uf'
                         target="_blank"
                         title="GitHub"
                         rel="me"
@@ -175,26 +86,6 @@ freqtrade backtesting --strategy YourStrategy 这将显示策略的表现，包�
                             <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
   <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
   <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
-</svg>
-
-
-
-                        
-                    </a>
-                </li>
-            
-                <li>
-                    <a 
-                        href='https://twitter.com'
-                        target="_blank"
-                        title="Twitter"
-                        rel="me"
-                    >
-                        
-                        
-                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-twitter" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-  <path d="M22 4.01c-1 .49 -1.98 .689 -3 .99c-1.121 -1.265 -2.783 -1.335 -4.38 -.737s-2.643 2.06 -2.62 3.737v1c-3.245 .083 -6.135 -1.395 -8 -4c0 0 -4.182 7.433 4 11c-1.872 1.247 -3.739 2.088 -6 2c3.308 1.803 6.913 2.423 10.034 1.517c3.58 -1.04 6.522 -3.723 7.651 -7.742a13.84 13.84 0 0 0 .497 -3.753c-.002 -.249 1.51 -2.772 1.818 -4.013z" />
 </svg>
 
 
@@ -228,7 +119,7 @@ freqtrade backtesting --strategy YourStrategy 这将显示策略的表现，包�
         
         
         <li >
-            <a href='/page/archives/' >
+            <a href='/archives/' >
                 
                 
                 
@@ -248,7 +139,7 @@ freqtrade backtesting --strategy YourStrategy 这将显示策略的表现，包�
         
         
         <li >
-            <a href='/page/search/' >
+            <a href='/search/' >
                 
                 
                 
@@ -267,7 +158,7 @@ freqtrade backtesting --strategy YourStrategy 这将显示策略的表现，包�
         
         
         <li >
-            <a href='/page/links/' >
+            <a href='https://github.com/bw4uf' target="_blank">
                 
                 
                 
@@ -280,17 +171,39 @@ freqtrade backtesting --strategy YourStrategy 这将显示策略的表现，包�
 
 
                 
-                <span>Links</span>
+                <span>Link</span>
             </a>
         </li>
         
-    </ol>
-    <div class="menu-bottom-section">
-        <ol class="menu">
+        <li class="menu-bottom-section">
+            <ol class="menu">
+                    
+                        <li id="i18n-switch">  
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-language" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M4 5h7" />
+  <path d="M9 3v2c0 4.418 -2.239 8 -5 8" />
+  <path d="M5 9c-.003 2.144 2.952 3.908 6.7 4" />
+  <path d="M12 20l4 -9l4 9" />
+  <path d="M19.1 18h-6.2" />
+</svg>
 
-            
-                <li id="dark-mode-toggle">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+
+
+                            <select name="language" title="language" onchange="window.location.href = this.selectedOptions[0].value">
+                                
+                                    <option value="https://ohdijkstra.github.io/en/" >English</option>
+                                
+                                    <option value="https://ohdijkstra.github.io/" selected>中文</option>
+                                
+                            </select>
+                        </li>
+                    
+                
+
+                
+                    <li id="dark-mode-toggle">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
   <path stroke="none" d="M0 0h24v24H0z"/>
   <circle cx="8" cy="12" r="2" />
   <rect x="2" y="6" width="20" height="12" rx="6" />
@@ -298,7 +211,7 @@ freqtrade backtesting --strategy YourStrategy 这将显示策略的表现，包�
 
 
 
-                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
   <path stroke="none" d="M0 0h24v24H0z"/>
   <circle cx="16" cy="12" r="2" />
   <rect x="2" y="6" width="20" height="12" rx="6" />
@@ -306,70 +219,15 @@ freqtrade backtesting --strategy YourStrategy 这将显示策略的表现，包�
 
 
 
-                    <span>Dark Mode</span>
-                </li>
-            
-        </ol>
-    </div>
+                        <span>暗色模式</span>
+                    </li>
+                
+            </ol>
+        </li>
+    </ol>
 </aside>
 
-    <aside class="sidebar right-sidebar sticky">
-        
-            
-                
-    <section class="widget archives">
-        <div class="widget-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z"/>
-  <line x1="5" y1="9" x2="19" y2="9" />
-  <line x1="5" y1="15" x2="19" y2="15" />
-  <line x1="11" y1="4" x2="7" y2="20" />
-  <line x1="17" y1="4" x2="13" y2="20" />
-</svg>
-
-
-
-        </div>
-        <h2 class="widget-title section-title">Table of contents</h2>
-        
-        <div class="widget--toc">
-            <nav id="TableOfContents">
-  <ul>
-    <li><a href="#引言">引言</a></li>
-    <li><a href="#概要">概要</a></li>
-    <li><a href="#freqtrade简介">Freqtrade简介</a></li>
-    <li><a href="#环境搭建">环境搭建</a>
-      <ul>
-        <li><a href="#安装freqtrade">安装Freqtrade</a></li>
-        <li><a href="#配置freqtrade">配置Freqtrade</a></li>
-        <li><a href="#准备交易环境">准备交易环境</a></li>
-      </ul>
-    </li>
-    <li><a href="#策略开发">策略开发</a>
-      <ul>
-        <li><a href="#策略结构">策略结构</a></li>
-        <li><a href="#开发流程">开发流程</a></li>
-        <li><a href="#测试和优化策略">测试和优化策略</a></li>
-        <li><a href="#策略示例">策略示例</a></li>
-      </ul>
-    </li>
-    <li><a href="#实盘交易">实盘交易</a>
-      <ul>
-        <li><a href="#准备阶段">准备阶段</a></li>
-        <li><a href="#启动实盘交易">启动实盘交易</a></li>
-        <li><a href="#风险控制">风险控制</a></li>
-        <li><a href="#优化和迭代">优化和迭代</a></li>
-      </ul>
-    </li>
-  </ul>
-</nav>
-        </div>
-    </section>
-
-            
-        
-    </aside>
-
+    
 
             <main class="main full-width">
     <article class="main-article">
@@ -417,13 +275,32 @@ freqtrade backtesting --strategy YourStrategy 这将显示策略的表现，包�
 
 
                 <time class="article-time--reading">
-                    1 minute read
+                    阅读时长: 7 分钟
                 </time>
             </div>
         
     </footer>
     
 
+    
+        <footer class="article-translations">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-language" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M4 5h7" />
+  <path d="M9 3v2c0 4.418 -2.239 8 -5 8" />
+  <path d="M5 9c-.003 2.144 2.952 3.908 6.7 4" />
+  <path d="M12 20l4 -9l4 9" />
+  <path d="M19.1 18h-6.2" />
+</svg>
+
+
+
+            <div>
+                
+                    <a href="https://ohdijkstra.github.io/en/post/freqtrade-tutorial/" class="link">English</a>
+                
+            </div>
+        </footer>
     
 </div>
 
@@ -432,22 +309,32 @@ freqtrade backtesting --strategy YourStrategy 这将显示策略的表现，包�
     <section class="article-content">
     
     
-    <h2 id="引言">引言</h2>
-<p>Freqtrade是一款开源的加密货币算法交易软件，它允许交易者利用定制策略自动执行交易。本教程旨在通过浅显的语言和逐步的解析，向您介绍Freqtrade的基础概念和操作流程，使您能够理解并开始使用这一工具进行算法交易。</p>
-<h2 id="概要">概要</h2>
-<ol>
+    <h2 id="引言">
+    <a href="#%e5%bc%95%e8%a8%80" class="header-anchor">#</a>
+    引言
+</h2><p>Freqtrade是一款开源的加密货币算法交易软件，它允许交易者利用定制策略自动执行交易。本教程旨在通过浅显的语言和逐步的解析，向您介绍Freqtrade的基础概念和操作流程，使您能够理解并开始使用这一工具进行算法交易。</p>
+<h2 id="概要">
+    <a href="#%e6%a6%82%e8%a6%81" class="header-anchor">#</a>
+    概要
+</h2><ol>
 <li><strong>Freqtrade简介</strong>：了解什么是Freqtrade及其主要特点。</li>
 <li><strong>环境搭建</strong>：如何安装和配置Freqtrade。</li>
 <li><strong>策略开发</strong>：策略的基本组成和开发流程。</li>
 <li><strong>回测和优化</strong>：如何测试和优化交易策略。</li>
 <li><strong>实盘交易</strong>：将策略应用到实际交易中。</li>
 </ol>
-<h2 id="freqtrade简介">Freqtrade简介</h2>
-<p>Freqtrade是一种基于Python的算法交易软件，主要用于加密货币市场。它的主要特点包括易于使用的命令行界面、支持多种交易所、灵活的策略配置和有效的数据管理。用户可以编写自己的交易策略，Freqtrade将根据这些策略自动执行交易。</p>
-<h2 id="环境搭建">环境搭建</h2>
-<p>环境搭建是Freqtrade使用的前提，它确保了软件运行的基础设施。本节将详细介绍Freqtrade的安装过程、配置文件的设置，以及如何准备交易环境。</p>
-<h3 id="安装freqtrade">安装Freqtrade</h3>
-<p>安装Freqtrade涉及几个关键步骤，确保软件能够在您的系统中顺利运行。</p>
+<h2 id="freqtrade简介">
+    <a href="#freqtrade%e7%ae%80%e4%bb%8b" class="header-anchor">#</a>
+    Freqtrade简介
+</h2><p>Freqtrade是一种基于Python的算法交易软件，主要用于加密货币市场。它的主要特点包括易于使用的命令行界面、支持多种交易所、灵活的策略配置和有效的数据管理。用户可以编写自己的交易策略，Freqtrade将根据这些策略自动执行交易。</p>
+<h2 id="环境搭建">
+    <a href="#%e7%8e%af%e5%a2%83%e6%90%ad%e5%bb%ba" class="header-anchor">#</a>
+    环境搭建
+</h2><p>环境搭建是Freqtrade使用的前提，它确保了软件运行的基础设施。本节将详细介绍Freqtrade的安装过程、配置文件的设置，以及如何准备交易环境。</p>
+<h3 id="安装freqtrade">
+    <a href="#%e5%ae%89%e8%a3%85freqtrade" class="header-anchor">#</a>
+    安装Freqtrade
+</h3><p>安装Freqtrade涉及几个关键步骤，确保软件能够在您的系统中顺利运行。</p>
 <ol>
 <li>
 <p><strong>系统要求</strong>：确保您的操作系统能够运行Freqtrade。虽然Freqtrade支持多种操作系统（如Windows、macOS和Linux），但在Linux上运行通常会提供最佳性能和稳定性。</p>
@@ -469,8 +356,10 @@ freqtrade backtesting --strategy YourStrategy 这将显示策略的表现，包�
 </span></span></code></pre></div><p>这将确保所有必要的库都被安装在您的Python环境中。</p>
 </li>
 </ol>
-<h3 id="配置freqtrade">配置Freqtrade</h3>
-<p>配置是Freqtrade正常运行的关键，涉及API连接、交易参数和策略选择等方面。</p>
+<h3 id="配置freqtrade">
+    <a href="#%e9%85%8d%e7%bd%aefreqtrade" class="header-anchor">#</a>
+    配置Freqtrade
+</h3><p>配置是Freqtrade正常运行的关键，涉及API连接、交易参数和策略选择等方面。</p>
 <ol>
 <li>
 <p><strong>配置文件</strong>：Freqtrade使用JSON格式的配置文件。您可以从<code>config.json.example</code>样本文件开始，复制并重命名为<code>config.json</code>，然后根据您的需求进行编辑。</p>
@@ -485,8 +374,10 @@ freqtrade backtesting --strategy YourStrategy 这将显示策略的表现，包�
 <p><strong>其他配置</strong>：包括但不限于风险管理参数（如止损、止盈设置）、交易时间间隔、日志记录等。这些配置项将根据您的交易策略和风险偏好来设定。</p>
 </li>
 </ol>
-<h3 id="准备交易环境">准备交易环境</h3>
-<p>完成Freqtrade的安装和配置后，您需要准备交易环境，确保一切设置正确无误。</p>
+<h3 id="准备交易环境">
+    <a href="#%e5%87%86%e5%a4%87%e4%ba%a4%e6%98%93%e7%8e%af%e5%a2%83" class="header-anchor">#</a>
+    准备交易环境
+</h3><p>完成Freqtrade的安装和配置后，您需要准备交易环境，确保一切设置正确无误。</p>
 <ol>
 <li>
 <p><strong>测试安装</strong>：运行Freqtrade的测试命令来验证安装是否成功，例如：</p>
@@ -502,18 +393,24 @@ freqtrade backtesting --strategy YourStrategy 这将显示策略的表现，包�
 <p><strong>运行Dry-run</strong>：在实际进行交易之前，建议先以Dry-run模式运行Freqtrade，这将模拟交易过程而不实际执行。这是检查策略和配置是否正确的好方法。</p>
 </li>
 </ol>
-<h2 id="策略开发">策略开发</h2>
-<p>策略开发是Freqtrade使用中的核心部分，它决定了交易行为的智能化程度和成功率。本节将深入探讨策略的组成、开发流程，以及如何测试和优化您的策略。</p>
-<h3 id="策略结构">策略结构</h3>
-<p>在Freqtrade中，策略是一个包含特定函数和设置的Python类。一个典型的策略文件包含以下部分：</p>
+<h2 id="策略开发">
+    <a href="#%e7%ad%96%e7%95%a5%e5%bc%80%e5%8f%91" class="header-anchor">#</a>
+    策略开发
+</h2><p>策略开发是Freqtrade使用中的核心部分，它决定了交易行为的智能化程度和成功率。本节将深入探讨策略的组成、开发流程，以及如何测试和优化您的策略。</p>
+<h3 id="策略结构">
+    <a href="#%e7%ad%96%e7%95%a5%e7%bb%93%e6%9e%84" class="header-anchor">#</a>
+    策略结构
+</h3><p>在Freqtrade中，策略是一个包含特定函数和设置的Python类。一个典型的策略文件包含以下部分：</p>
 <ul>
 <li><strong>元数据定义</strong>：包括策略的名称、作者、版本号和适用的时间框架。这些信息帮助标识和管理策略。</li>
 <li><strong>指标设置</strong>：策略中最重要的部分之一，定义了用于生成交易信号的技术指标。</li>
 <li><strong>买卖信号逻辑</strong>：基于指标结果，定义何时买入和卖出的条件逻辑。</li>
 <li><strong>止损和止盈</strong>：设定策略的风险管理措施，如止损点和止盈点。</li>
 </ul>
-<h3 id="开发流程">开发流程</h3>
-<p>策略开发的过程可以分为以下几个步骤：</p>
+<h3 id="开发流程">
+    <a href="#%e5%bc%80%e5%8f%91%e6%b5%81%e7%a8%8b" class="header-anchor">#</a>
+    开发流程
+</h3><p>策略开发的过程可以分为以下几个步骤：</p>
 <ol>
 <li>
 <p><strong>理解市场和选择指标</strong>：首先需要对市场有深入的理解，基于这种理解选择合适的技术指标。例如，如果您相信市场具有趋势特性，可能会选择移动平均线（MA）、相对强弱指数（RSI）等趋势指标。</p>
@@ -525,8 +422,10 @@ freqtrade backtesting --strategy YourStrategy 这将显示策略的表现，包�
 <p><strong>配置策略文件</strong>：在策略类中配置所需的参数，如指标的时间周期、买卖条件的阈值等。</p>
 </li>
 </ol>
-<h3 id="测试和优化策略">测试和优化策略</h3>
-<p>开发策略后，需要通过回测来验证其有效性和盈利能力。Freqtrade提供了强大的回测工具，允许您在历史数据上测试策略。</p>
+<h3 id="测试和优化策略">
+    <a href="#%e6%b5%8b%e8%af%95%e5%92%8c%e4%bc%98%e5%8c%96%e7%ad%96%e7%95%a5" class="header-anchor">#</a>
+    测试和优化策略
+</h3><p>开发策略后，需要通过回测来验证其有效性和盈利能力。Freqtrade提供了强大的回测工具，允许您在历史数据上测试策略。</p>
 <ol>
 <li>
 <p><strong>回测</strong>：使用Freqtrade的回测功能运行策略，查看其在历史数据上的表现。这可以通过命令行工具完成，例如：</p>
@@ -540,18 +439,24 @@ freqtrade backtesting --strategy YourStrategy 这将显示策略的表现，包�
 <p><strong>优化</strong>：根据回测结果优化策略参数。Freqtrade支持策略优化功能，可以自动调整参数以寻找最佳配置。</p>
 </li>
 </ol>
-<h3 id="策略示例">策略示例</h3>
-<p>假设我们正在开发一个基于简单移动平均线（SMA）交叉的策略，我们可能会这样实现：</p>
+<h3 id="策略示例">
+    <a href="#%e7%ad%96%e7%95%a5%e7%a4%ba%e4%be%8b" class="header-anchor">#</a>
+    策略示例
+</h3><p>假设我们正在开发一个基于简单移动平均线（SMA）交叉的策略，我们可能会这样实现：</p>
 <ul>
 <li><strong>定义指标</strong>：计算两条不同周期的SMA（如SMA30和SMA100）。</li>
 <li><strong>买入逻辑</strong>：当短周期SMA（SMA30）从下穿过长周期SMA（SMA100）时，发出买入信号。</li>
 <li><strong>卖出逻辑</strong>：当短周期SMA（SMA30）从上穿过长周期SMA（SMA100）时，发出卖出信号。</li>
 </ul>
 <p>通过这样的逻辑，我们可以构建一个简单的趋势跟踪策略。然后，通过回测和优化过程，我们可以细化这个策略，改进其表现，最终形成一个高效的自动化交易策略。</p>
-<h2 id="实盘交易">实盘交易</h2>
-<p>实盘交易是将策略在真实市场环境中执行的过程，这是算法交易的最终目标。在Freqtrade中实施实盘交易需要谨慎和精确的准备。本节将详细探讨如何安全有效地将您的策略部署到实盘交易中。</p>
-<h3 id="准备阶段">准备阶段</h3>
-<p>在开始实盘交易之前，需要确保以下几点：</p>
+<h2 id="实盘交易">
+    <a href="#%e5%ae%9e%e7%9b%98%e4%ba%a4%e6%98%93" class="header-anchor">#</a>
+    实盘交易
+</h2><p>实盘交易是将策略在真实市场环境中执行的过程，这是算法交易的最终目标。在Freqtrade中实施实盘交易需要谨慎和精确的准备。本节将详细探讨如何安全有效地将您的策略部署到实盘交易中。</p>
+<h3 id="准备阶段">
+    <a href="#%e5%87%86%e5%a4%87%e9%98%b6%e6%ae%b5" class="header-anchor">#</a>
+    准备阶段
+</h3><p>在开始实盘交易之前，需要确保以下几点：</p>
 <ol>
 <li>
 <p><strong>策略验证</strong>：确保您的策略经过了充分的回测和优化，并且在Dry-run（模拟交易）模式下表现良好。</p>
@@ -563,8 +468,10 @@ freqtrade backtesting --strategy YourStrategy 这将显示策略的表现，包�
 <p><strong>资金管理</strong>：决定用于交易的资金量。不应投入超出您承受能力的资金。在Freqtrade中，可以通过配置文件设定资金使用量。</p>
 </li>
 </ol>
-<h3 id="启动实盘交易">启动实盘交易</h3>
-<ol>
+<h3 id="启动实盘交易">
+    <a href="#%e5%90%af%e5%8a%a8%e5%ae%9e%e7%9b%98%e4%ba%a4%e6%98%93" class="header-anchor">#</a>
+    启动实盘交易
+</h3><ol>
 <li>
 <p><strong>配置实盘环境</strong>：在配置文件中切换到实盘模式，并确保所有设置（如API密钥、资金分配、交易对等）都正确无误。</p>
 </li>
@@ -579,15 +486,19 @@ freqtrade backtesting --strategy YourStrategy 这将显示策略的表现，包�
 <p><strong>应对市场变化</strong>：市场条件不断变化，您的策略可能需要调整以适应这些变化。保持策略更新并对市场趋势保持敏感，可以提高长期成功的机会。</p>
 </li>
 </ol>
-<h3 id="风险控制">风险控制</h3>
-<p>在实盘交易中，风险控制是至关重要的。这包括：</p>
+<h3 id="风险控制">
+    <a href="#%e9%a3%8e%e9%99%a9%e6%8e%a7%e5%88%b6" class="header-anchor">#</a>
+    风险控制
+</h3><p>在实盘交易中，风险控制是至关重要的。这包括：</p>
 <ul>
 <li><strong>设置合理的止损点</strong>：以防止大额损失。</li>
 <li><strong>资金分散</strong>：不要将所有资金投入单一交易或市场。</li>
 <li><strong>避免过度交易</strong>：根据策略逻辑交易，避免因情绪化决策而进行不必要的交易。</li>
 </ul>
-<h3 id="优化和迭代">优化和迭代</h3>
-<p>即使在实盘交易中，也应持续寻求策略的优化和改进。市场是动态的，策略也应该是动态调整的：</p>
+<h3 id="优化和迭代">
+    <a href="#%e4%bc%98%e5%8c%96%e5%92%8c%e8%bf%ad%e4%bb%a3" class="header-anchor">#</a>
+    优化和迭代
+</h3><p>即使在实盘交易中，也应持续寻求策略的优化和改进。市场是动态的，策略也应该是动态调整的：</p>
 <ul>
 <li><strong>收集交易数据</strong>：分析实盘交易数据，了解策略在实际市场中的表现。</li>
 <li><strong>周期性回测</strong>：使用最新的市场数据定期回测策略，确保其有效性。</li>
@@ -609,18 +520,6 @@ freqtrade backtesting --strategy YourStrategy 这将显示策略的表现，包�
     </section>
 
 
-    
-    <section class="article-copyright">
-        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z"/>
-  <circle cx="12" cy="12" r="9" />
-  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
-</svg>
-
-
-
-        <span>Licensed under CC BY-NC-SA 4.0</span>
-    </section>
     </footer>
 
 
@@ -682,14 +581,12 @@ freqtrade backtesting --strategy YourStrategy 这将显示策略的表现，包�
     <section class="copyright">
         &copy; 
         
-            2020 - 
-        
         2024 UWin AI
     </section>
     
     <section class="powerby">
         Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
-        Theme <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.23.0">Stack</a></b> designed by <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
+        主题 <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.25.0">Stack</a></b> 由 <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a> 设计
     </section>
 </footer>
 

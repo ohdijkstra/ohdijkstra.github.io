@@ -1,32 +1,18 @@
 <!DOCTYPE html>
-<html lang="zh" dir="ltr">
+<html lang="zh-cn" dir="ltr">
     <head><meta charset='utf-8'>
-<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='引言 Apple M1 芯片引入了对 Mac 架构的重大变革，它从传统的 Intel x86 架构转变为 ARM 架构。这一变化对于开发者意味着许多现有的应用和依赖库需要适配新的 arm64 架构。在这篇博客中，我们将探讨在 M1 Mac 上使用 iOS 模拟器时可能遇到的典型报错问题，解释其背后的原理，并提供实际的解决方法。
-M1 芯片与模拟器兼容性问题 原理解析 M1 芯片的 ARM 架构与早期 Mac 上的 x86 架构有显著差异。M1 芯片原生支持 arm64 架构，而不是 Intel 芯片使用的 x86_64 架构。这一改变直接影响到了开发环境，尤其是在运行模拟器时。
-在 M1 Mac 上，iOS 模拟器可以直接以 arm64 架构运行，而不需要任何转换，这样可以提高性能。但这也带来了一个问题：很多现有的第三方库和依赖项仍然只编译为 x86_64 架构，未能提供 arm64 版本。
-报错情况 开发者在 M1 Mac 上使用模拟器运行这些仅支持 x86_64 的库时，可能会遇到类似以下的报错信息：
-Building for &amp;#39;iOS-simulator&amp;#39;, but linking in object file built for &amp;#39;iOS&amp;#39;, incompatible with iOS-simulator arm64. 这表示尝试在 arm64 架构的模拟器上运行一个仅为 x86_64 架构编译的库。'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="# 引言 Apple M1 芯片引入了对 Mac 架构的重大变革，它从传统的 Intel x86 架构转变为 ARM 架构。这一变化对于开发者意味着许多现有的应用和依赖库需要适配新的 arm64 架构。在">
 <title>解决arm64架构Mac上仅支持x86架构的CocoaPods依赖导致的模拟器运行错误</title>
 
 <link rel='canonical' href='https://ohdijkstra.github.io/post/arm64-simulator-conflict/'>
 
-<link rel="stylesheet" href="/scss/style.min.abbd69b2908fdfcd5179898beaafd374514a86538d81639ddd2c58c06ae54e40.css"><meta property='og:title' content='解决arm64架构Mac上仅支持x86架构的CocoaPods依赖导致的模拟器运行错误'>
-<meta property='og:description' content='引言 Apple M1 芯片引入了对 Mac 架构的重大变革，它从传统的 Intel x86 架构转变为 ARM 架构。这一变化对于开发者意味着许多现有的应用和依赖库需要适配新的 arm64 架构。在这篇博客中，我们将探讨在 M1 Mac 上使用 iOS 模拟器时可能遇到的典型报错问题，解释其背后的原理，并提供实际的解决方法。
-M1 芯片与模拟器兼容性问题 原理解析 M1 芯片的 ARM 架构与早期 Mac 上的 x86 架构有显著差异。M1 芯片原生支持 arm64 架构，而不是 Intel 芯片使用的 x86_64 架构。这一改变直接影响到了开发环境，尤其是在运行模拟器时。
-在 M1 Mac 上，iOS 模拟器可以直接以 arm64 架构运行，而不需要任何转换，这样可以提高性能。但这也带来了一个问题：很多现有的第三方库和依赖项仍然只编译为 x86_64 架构，未能提供 arm64 版本。
-报错情况 开发者在 M1 Mac 上使用模拟器运行这些仅支持 x86_64 的库时，可能会遇到类似以下的报错信息：
-Building for &amp;#39;iOS-simulator&amp;#39;, but linking in object file built for &amp;#39;iOS&amp;#39;, incompatible with iOS-simulator arm64. 这表示尝试在 arm64 架构的模拟器上运行一个仅为 x86_64 架构编译的库。'>
+<link rel="stylesheet" href="/scss/style.min.760e3dabc1e140d2e6abd27a8ca0aabb60e568829b29f67d2df12024136eff37.css"><meta property='og:title' content="解决arm64架构Mac上仅支持x86架构的CocoaPods依赖导致的模拟器运行错误">
+<meta property='og:description' content="# 引言 Apple M1 芯片引入了对 Mac 架构的重大变革，它从传统的 Intel x86 架构转变为 ARM 架构。这一变化对于开发者意味着许多现有的应用和依赖库需要适配新的 arm64 架构。在">
 <meta property='og:url' content='https://ohdijkstra.github.io/post/arm64-simulator-conflict/'>
 <meta property='og:site_name' content='UWin AI'>
 <meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='iOS' /><meta property='article:tag' content='' /><meta property='article:published_time' content='2024-04-11T12:02:52&#43;08:00'/><meta property='article:modified_time' content='2024-04-11T12:02:52&#43;08:00'/>
 <meta name="twitter:title" content="解决arm64架构Mac上仅支持x86架构的CocoaPods依赖导致的模拟器运行错误">
-<meta name="twitter:description" content="引言 Apple M1 芯片引入了对 Mac 架构的重大变革，它从传统的 Intel x86 架构转变为 ARM 架构。这一变化对于开发者意味着许多现有的应用和依赖库需要适配新的 arm64 架构。在这篇博客中，我们将探讨在 M1 Mac 上使用 iOS 模拟器时可能遇到的典型报错问题，解释其背后的原理，并提供实际的解决方法。
-M1 芯片与模拟器兼容性问题 原理解析 M1 芯片的 ARM 架构与早期 Mac 上的 x86 架构有显著差异。M1 芯片原生支持 arm64 架构，而不是 Intel 芯片使用的 x86_64 架构。这一改变直接影响到了开发环境，尤其是在运行模拟器时。
-在 M1 Mac 上，iOS 模拟器可以直接以 arm64 架构运行，而不需要任何转换，这样可以提高性能。但这也带来了一个问题：很多现有的第三方库和依赖项仍然只编译为 x86_64 架构，未能提供 arm64 版本。
-报错情况 开发者在 M1 Mac 上使用模拟器运行这些仅支持 x86_64 的库时，可能会遇到类似以下的报错信息：
-Building for &amp;#39;iOS-simulator&amp;#39;, but linking in object file built for &amp;#39;iOS&amp;#39;, incompatible with iOS-simulator arm64. 这表示尝试在 arm64 架构的模拟器上运行一个仅为 x86_64 架构编译的库。">
-    <link rel="shortcut icon" href="/favicon.png" />
-
+<meta name="twitter:description" content="# 引言 Apple M1 芯片引入了对 Mac 架构的重大变革，它从传统的 Intel x86 架构转变为 ARM 架构。这一变化对于开发者意味着许多现有的应用和依赖库需要适配新的 arm64 架构。在">
     </head>
     <body class="
     article-page
@@ -54,7 +40,7 @@ Building for &amp;#39;iOS-simulator&amp;#39;, but linking in object file built f
     })();
 </script>
 <div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
-    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="Toggle Menu">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="切换菜单">
         <span class="hamburger-box">
             <span class="hamburger-inner"></span>
         </span>
@@ -70,13 +56,13 @@ Building for &amp;#39;iOS-simulator&amp;#39;, but linking in object file built f
                     
                     
                         
-                        <img src="/img/avatar_hu3cbb0e7b2d3cd7054d64a53d8df98dcb_61126_300x0_resize_box_3.png" width="300"
+                        <img src="/img/avatar_huc9acb0a5042744b0e07a50f5827695ef_110614_300x0_resize_box_3.png" width="300"
                             height="300" class="site-logo" loading="lazy" alt="Avatar">
                     
                 
                 </a>
                 
-                    <span class="emoji">🍥</span>
+                    <span class="emoji">😄</span>
                 
             </figure>
             
@@ -84,13 +70,13 @@ Building for &amp;#39;iOS-simulator&amp;#39;, but linking in object file built f
         
         <div class="site-meta">
             <h1 class="site-name"><a href="/">UWin AI</a></h1>
-            <h2 class="site-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</h2>
+            <h2 class="site-description">行至水穷处，坐看云起时。</h2>
         </div>
-    </header><ol class="social-menu">
+    </header><ol class="menu-social">
             
                 <li>
                     <a 
-                        href='https://github.com/CaiJimmy/hugo-theme-stack'
+                        href='https://github.com/bw4uf'
                         target="_blank"
                         title="GitHub"
                         rel="me"
@@ -100,26 +86,6 @@ Building for &amp;#39;iOS-simulator&amp;#39;, but linking in object file built f
                             <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
   <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
   <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
-</svg>
-
-
-
-                        
-                    </a>
-                </li>
-            
-                <li>
-                    <a 
-                        href='https://twitter.com'
-                        target="_blank"
-                        title="Twitter"
-                        rel="me"
-                    >
-                        
-                        
-                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-twitter" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-  <path d="M22 4.01c-1 .49 -1.98 .689 -3 .99c-1.121 -1.265 -2.783 -1.335 -4.38 -.737s-2.643 2.06 -2.62 3.737v1c-3.245 .083 -6.135 -1.395 -8 -4c0 0 -4.182 7.433 4 11c-1.872 1.247 -3.739 2.088 -6 2c3.308 1.803 6.913 2.423 10.034 1.517c3.58 -1.04 6.522 -3.723 7.651 -7.742a13.84 13.84 0 0 0 .497 -3.753c-.002 -.249 1.51 -2.772 1.818 -4.013z" />
 </svg>
 
 
@@ -153,7 +119,7 @@ Building for &amp;#39;iOS-simulator&amp;#39;, but linking in object file built f
         
         
         <li >
-            <a href='/page/archives/' >
+            <a href='/archives/' >
                 
                 
                 
@@ -173,7 +139,7 @@ Building for &amp;#39;iOS-simulator&amp;#39;, but linking in object file built f
         
         
         <li >
-            <a href='/page/search/' >
+            <a href='/search/' >
                 
                 
                 
@@ -192,7 +158,7 @@ Building for &amp;#39;iOS-simulator&amp;#39;, but linking in object file built f
         
         
         <li >
-            <a href='/page/links/' >
+            <a href='https://github.com/bw4uf' target="_blank">
                 
                 
                 
@@ -205,17 +171,39 @@ Building for &amp;#39;iOS-simulator&amp;#39;, but linking in object file built f
 
 
                 
-                <span>Links</span>
+                <span>Link</span>
             </a>
         </li>
         
-    </ol>
-    <div class="menu-bottom-section">
-        <ol class="menu">
+        <li class="menu-bottom-section">
+            <ol class="menu">
+                    
+                        <li id="i18n-switch">  
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-language" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M4 5h7" />
+  <path d="M9 3v2c0 4.418 -2.239 8 -5 8" />
+  <path d="M5 9c-.003 2.144 2.952 3.908 6.7 4" />
+  <path d="M12 20l4 -9l4 9" />
+  <path d="M19.1 18h-6.2" />
+</svg>
 
-            
-                <li id="dark-mode-toggle">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+
+
+                            <select name="language" title="language" onchange="window.location.href = this.selectedOptions[0].value">
+                                
+                                    <option value="https://ohdijkstra.github.io/en/" >English</option>
+                                
+                                    <option value="https://ohdijkstra.github.io/" selected>中文</option>
+                                
+                            </select>
+                        </li>
+                    
+                
+
+                
+                    <li id="dark-mode-toggle">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
   <path stroke="none" d="M0 0h24v24H0z"/>
   <circle cx="8" cy="12" r="2" />
   <rect x="2" y="6" width="20" height="12" rx="6" />
@@ -223,7 +211,7 @@ Building for &amp;#39;iOS-simulator&amp;#39;, but linking in object file built f
 
 
 
-                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
   <path stroke="none" d="M0 0h24v24H0z"/>
   <circle cx="16" cy="12" r="2" />
   <rect x="2" y="6" width="20" height="12" rx="6" />
@@ -231,60 +219,15 @@ Building for &amp;#39;iOS-simulator&amp;#39;, but linking in object file built f
 
 
 
-                    <span>Dark Mode</span>
-                </li>
-            
-        </ol>
-    </div>
+                        <span>暗色模式</span>
+                    </li>
+                
+            </ol>
+        </li>
+    </ol>
 </aside>
 
-    <aside class="sidebar right-sidebar sticky">
-        
-            
-                
-    <section class="widget archives">
-        <div class="widget-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z"/>
-  <line x1="5" y1="9" x2="19" y2="9" />
-  <line x1="5" y1="15" x2="19" y2="15" />
-  <line x1="11" y1="4" x2="7" y2="20" />
-  <line x1="17" y1="4" x2="13" y2="20" />
-</svg>
-
-
-
-        </div>
-        <h2 class="widget-title section-title">Table of contents</h2>
-        
-        <div class="widget--toc">
-            <nav id="TableOfContents">
-  <ul>
-    <li><a href="#引言">引言</a></li>
-    <li><a href="#m1-芯片与模拟器兼容性问题">M1 芯片与模拟器兼容性问题</a>
-      <ul>
-        <li><a href="#原理解析">原理解析</a></li>
-        <li><a href="#报错情况">报错情况</a></li>
-      </ul>
-    </li>
-    <li><a href="#解决方法">解决方法</a>
-      <ul>
-        <li><a href="#使用-excluded_archs">使用 <code>EXCLUDED_ARCHS</code></a></li>
-        <li><a href="#具体操作">具体操作</a></li>
-        <li><a href="#原理说明">原理说明</a></li>
-        <li><a href="#长期解决方案">长期解决方案</a></li>
-      </ul>
-    </li>
-    <li><a href="#结语">结语</a></li>
-  </ul>
-</nav>
-        </div>
-    </section>
-
-            
-        
-    </aside>
-
+    
 
             <main class="main full-width">
     <article class="main-article">
@@ -332,13 +275,32 @@ Building for &amp;#39;iOS-simulator&amp;#39;, but linking in object file built f
 
 
                 <time class="article-time--reading">
-                    1 minute read
+                    阅读时长: 3 分钟
                 </time>
             </div>
         
     </footer>
     
 
+    
+        <footer class="article-translations">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-language" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M4 5h7" />
+  <path d="M9 3v2c0 4.418 -2.239 8 -5 8" />
+  <path d="M5 9c-.003 2.144 2.952 3.908 6.7 4" />
+  <path d="M12 20l4 -9l4 9" />
+  <path d="M19.1 18h-6.2" />
+</svg>
+
+
+
+            <div>
+                
+                    <a href="https://ohdijkstra.github.io/en/post/arm64-simulator-conflict/" class="link">English</a>
+                
+            </div>
+        </footer>
     
 </div>
 
@@ -347,21 +309,35 @@ Building for &amp;#39;iOS-simulator&amp;#39;, but linking in object file built f
     <section class="article-content">
     
     
-    <h2 id="引言">引言</h2>
-<p>Apple M1 芯片引入了对 Mac 架构的重大变革，它从传统的 Intel x86 架构转变为 ARM 架构。这一变化对于开发者意味着许多现有的应用和依赖库需要适配新的 <code>arm64</code> 架构。在这篇博客中，我们将探讨在 M1 Mac 上使用 iOS 模拟器时可能遇到的典型报错问题，解释其背后的原理，并提供实际的解决方法。</p>
-<h2 id="m1-芯片与模拟器兼容性问题">M1 芯片与模拟器兼容性问题</h2>
-<h3 id="原理解析">原理解析</h3>
-<p>M1 芯片的 ARM 架构与早期 Mac 上的 x86 架构有显著差异。M1 芯片原生支持 <code>arm64</code> 架构，而不是 Intel 芯片使用的 <code>x86_64</code> 架构。这一改变直接影响到了开发环境，尤其是在运行模拟器时。</p>
+    <h2 id="引言">
+    <a href="#%e5%bc%95%e8%a8%80" class="header-anchor">#</a>
+    引言
+</h2><p>Apple M1 芯片引入了对 Mac 架构的重大变革，它从传统的 Intel x86 架构转变为 ARM 架构。这一变化对于开发者意味着许多现有的应用和依赖库需要适配新的 <code>arm64</code> 架构。在这篇博客中，我们将探讨在 M1 Mac 上使用 iOS 模拟器时可能遇到的典型报错问题，解释其背后的原理，并提供实际的解决方法。</p>
+<h2 id="m1-芯片与模拟器兼容性问题">
+    <a href="#m1-%e8%8a%af%e7%89%87%e4%b8%8e%e6%a8%a1%e6%8b%9f%e5%99%a8%e5%85%bc%e5%ae%b9%e6%80%a7%e9%97%ae%e9%a2%98" class="header-anchor">#</a>
+    M1 芯片与模拟器兼容性问题
+</h2><h3 id="原理解析">
+    <a href="#%e5%8e%9f%e7%90%86%e8%a7%a3%e6%9e%90" class="header-anchor">#</a>
+    原理解析
+</h3><p>M1 芯片的 ARM 架构与早期 Mac 上的 x86 架构有显著差异。M1 芯片原生支持 <code>arm64</code> 架构，而不是 Intel 芯片使用的 <code>x86_64</code> 架构。这一改变直接影响到了开发环境，尤其是在运行模拟器时。</p>
 <p>在 M1 Mac 上，iOS 模拟器可以直接以 <code>arm64</code> 架构运行，而不需要任何转换，这样可以提高性能。但这也带来了一个问题：很多现有的第三方库和依赖项仍然只编译为 <code>x86_64</code> 架构，未能提供 <code>arm64</code> 版本。</p>
-<h3 id="报错情况">报错情况</h3>
-<p>开发者在 M1 Mac 上使用模拟器运行这些仅支持 <code>x86_64</code> 的库时，可能会遇到类似以下的报错信息：</p>
+<h3 id="报错情况">
+    <a href="#%e6%8a%a5%e9%94%99%e6%83%85%e5%86%b5" class="header-anchor">#</a>
+    报错情况
+</h3><p>开发者在 M1 Mac 上使用模拟器运行这些仅支持 <code>x86_64</code> 的库时，可能会遇到类似以下的报错信息：</p>
 <pre tabindex="0"><code>Building for &#39;iOS-simulator&#39;, but linking in object file built for &#39;iOS&#39;, incompatible with iOS-simulator arm64.
 </code></pre><p>这表示尝试在 <code>arm64</code> 架构的模拟器上运行一个仅为 <code>x86_64</code> 架构编译的库。</p>
-<h2 id="解决方法">解决方法</h2>
-<h3 id="使用-excluded_archs">使用 <code>EXCLUDED_ARCHS</code></h3>
-<p><code>EXCLUDED_ARCHS</code> 设置在 Xcode 中用于指定在编译过程中要排除的架构。通过将 <code>EXCLUDED_ARCHS</code> 设置为 <code>arm64</code>，Xcode 在编译为模拟器时不会尝试编译 <code>arm64</code> 架构的代码，从而避免了架构不匹配的问题。</p>
-<h3 id="具体操作">具体操作</h3>
-<ol>
+<h2 id="解决方法">
+    <a href="#%e8%a7%a3%e5%86%b3%e6%96%b9%e6%b3%95" class="header-anchor">#</a>
+    解决方法
+</h2><h3 id="使用-excluded_archs">
+    <a href="#%e4%bd%bf%e7%94%a8-excluded_archs" class="header-anchor">#</a>
+    使用 <code>EXCLUDED_ARCHS</code>
+</h3><p><code>EXCLUDED_ARCHS</code> 设置在 Xcode 中用于指定在编译过程中要排除的架构。通过将 <code>EXCLUDED_ARCHS</code> 设置为 <code>arm64</code>，Xcode 在编译为模拟器时不会尝试编译 <code>arm64</code> 架构的代码，从而避免了架构不匹配的问题。</p>
+<h3 id="具体操作">
+    <a href="#%e5%85%b7%e4%bd%93%e6%93%8d%e4%bd%9c" class="header-anchor">#</a>
+    具体操作
+</h3><ol>
 <li><strong>打开 Xcode 项目设置</strong>：选择项目文件，然后在 Build Settings 标签页中查找 <code>Excluded Architectures</code> 设置。</li>
 <li><strong>设置排除架构</strong>：为 Debug 和 Release 配置添加 <code>arm64</code> 值，确保模拟器编译时排除此架构。</li>
 </ol>
@@ -392,12 +368,18 @@ Building for &amp;#39;iOS-simulator&amp;#39;, but linking in object file built f
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">end</span>
 </span></span></code></pre></div><p>这段代码在 <code>post_install</code> 钩子中遍历所有生成的 Xcode 项目，并设置每个配置的 <code>EXCLUDED_ARCHS</code>，仅对 iPhone 模拟器 SDK 排除 <code>arm64</code> 架构。这意味着当你在模拟器上运行项目时，Xcode 会忽略 <code>arm64</code> 架构，帮助解决兼容性问题。</p>
 <p>完成这些更改后，需要运行 <code>pod install</code> 或 <code>pod update</code> 命令，以确保这些更改应用到你的项目中。这样做可以帮助解决 M1 Mac 上使用模拟器时遇到的架构不匹配问题。</p>
-<h3 id="原理说明">原理说明</h3>
-<p>这样做的原理是让 Xcode 在构建应用时忽略对 <code>arm64</code> 架构的支持，这意味着它将使用 Rosetta 2 来模拟 <code>x86_64</code> 架构，从而允许应用在 M1 Mac 的模拟器上运行。</p>
-<h3 id="长期解决方案">长期解决方案</h3>
-<p>虽然使用 <code>EXCLUDED_ARCHS</code> 可以解决兼容性问题，但这只是一个临时解决方案。长期而言，库的维护者需要更新他们的代码，以确保它们支持 <code>arm64</code> 架构。随着越来越多的开发者转向 M1 Mac，对 <code>arm64</code> 架构的原生支持变得尤为重要。</p>
-<h2 id="结语">结语</h2>
-<p>M1 芯片的引入对 Mac 应用开发产生了深远的影响，特别是在处理架构兼容性方面。理解这些兼容性问题的原理，并知道如何临时解决它们，对于保持开发流程的顺畅至关重要。随着技术的进步和生态系统的逐渐成熟，开发者需要适应这种变化，更新和优化他们的应用以充分利用 M1 芯片的优势。长期来看，库和工具的维护者也将更新他们的产品，以原生支持新架构，最终消除这些兼容性问题。因此，虽然当前可能需要一些临时的解决方案来处理架构兼容性问题，但我们也可以期待一个更加统一和高效的开发环境，使得在所有苹果设备上的应用开发和运行更为顺畅。</p>
+<h3 id="原理说明">
+    <a href="#%e5%8e%9f%e7%90%86%e8%af%b4%e6%98%8e" class="header-anchor">#</a>
+    原理说明
+</h3><p>这样做的原理是让 Xcode 在构建应用时忽略对 <code>arm64</code> 架构的支持，这意味着它将使用 Rosetta 2 来模拟 <code>x86_64</code> 架构，从而允许应用在 M1 Mac 的模拟器上运行。</p>
+<h3 id="长期解决方案">
+    <a href="#%e9%95%bf%e6%9c%9f%e8%a7%a3%e5%86%b3%e6%96%b9%e6%a1%88" class="header-anchor">#</a>
+    长期解决方案
+</h3><p>虽然使用 <code>EXCLUDED_ARCHS</code> 可以解决兼容性问题，但这只是一个临时解决方案。长期而言，库的维护者需要更新他们的代码，以确保它们支持 <code>arm64</code> 架构。随着越来越多的开发者转向 M1 Mac，对 <code>arm64</code> 架构的原生支持变得尤为重要。</p>
+<h2 id="结语">
+    <a href="#%e7%bb%93%e8%af%ad" class="header-anchor">#</a>
+    结语
+</h2><p>M1 芯片的引入对 Mac 应用开发产生了深远的影响，特别是在处理架构兼容性方面。理解这些兼容性问题的原理，并知道如何临时解决它们，对于保持开发流程的顺畅至关重要。随着技术的进步和生态系统的逐渐成熟，开发者需要适应这种变化，更新和优化他们的应用以充分利用 M1 芯片的优势。长期来看，库和工具的维护者也将更新他们的产品，以原生支持新架构，最终消除这些兼容性问题。因此，虽然当前可能需要一些临时的解决方案来处理架构兼容性问题，但我们也可以期待一个更加统一和高效的开发环境，使得在所有苹果设备上的应用开发和运行更为顺畅。</p>
 
 </section>
 
@@ -411,18 +393,6 @@ Building for &amp;#39;iOS-simulator&amp;#39;, but linking in object file built f
     </section>
 
 
-    
-    <section class="article-copyright">
-        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z"/>
-  <circle cx="12" cy="12" r="9" />
-  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
-</svg>
-
-
-
-        <span>Licensed under CC BY-NC-SA 4.0</span>
-    </section>
     </footer>
 
 
@@ -484,14 +454,12 @@ Building for &amp;#39;iOS-simulator&amp;#39;, but linking in object file built f
     <section class="copyright">
         &copy; 
         
-            2020 - 
-        
         2024 UWin AI
     </section>
     
     <section class="powerby">
         Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
-        Theme <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.23.0">Stack</a></b> designed by <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
+        主题 <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.25.0">Stack</a></b> 由 <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a> 设计
     </section>
 </footer>
 
